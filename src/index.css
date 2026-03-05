@@ -67,6 +67,19 @@ body:has(#panelLoginPage) {
   background: #050d1a;
 }
 
+/* Panel /panel: sin hueco blanco — body y html a 100% y mismo fondo oscuro */
+html:has(.panel-page-full),
+body:has(.panel-page-full) {
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #050d1a;
+}
+body:has(.panel-page-full) #root {
+  height: 100%;
+  min-height: 100vh;
+}
+
 /* ── Tipografía mejorada ── */
 h1, h2, h3 {
   font-family: var(--font-ui);
