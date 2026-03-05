@@ -67,16 +67,11 @@ body:has(#panelLoginPage) {
   background: #050d1a;
 }
 
-/* Panel /panel: sin hueco blanco — body y html a 100% y mismo fondo oscuro */
-html:has(.panel-page-full),
+/* Panel /panel: fondo oscuro en toda la página (sin hueco blanco) */
 body:has(.panel-page-full) {
-  height: 100%;
-  min-height: 100vh;
-  overflow: hidden;
   background: #050d1a;
 }
 body:has(.panel-page-full) #root {
-  height: 100%;
   min-height: 100vh;
 }
 
@@ -6350,4 +6345,57 @@ h4, h5, h6, button, input, select, textarea, label {
 .panel-page-full .home-hero--full .home-hero-overlay {
   width: 100%;
   height: 100%;
+}
+
+/* Franja inferior del panel: textos que llenan el espacio y captan atención */
+.panel-foot-strip {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(6, 15, 29, 0.98) 0%, #050d1a 100%);
+  border-top: 1px solid rgba(212, 168, 58, 0.2);
+  padding: clamp(2rem, 5vw, 3.5rem) 1.5rem;
+}
+.panel-foot-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.panel-foot-lead {
+  font-family: var(--font-ui);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 1.25rem;
+}
+.panel-foot-lead strong {
+  color: #f0cf6a;
+  font-weight: 700;
+}
+.panel-foot-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.panel-foot-bullet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.panel-foot-bullet i {
+  color: var(--green);
+  font-size: 0.95rem;
+}
+.panel-foot-cta {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .panel-foot-bullets {
+    flex-direction: column;
+    align-items: center;
+  }
 }

@@ -65,6 +65,22 @@ export function PanelPage() {
             </p>
           </div>
         </div>
+
+        <section className="panel-foot-strip" aria-label="Por qué elegirnos">
+          <div className="panel-foot-inner">
+            <p className="panel-foot-lead">
+              <strong>Menos ruido, más resultados.</strong> Segmenta, personaliza y mide cada envío con herramientas pensadas para equipos que venden en serio.
+            </p>
+            <div className="panel-foot-bullets">
+              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> Envíos con IA y plantillas profesionales</span>
+              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> Importa contactos desde Excel en segundos</span>
+              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> Sin sorpresas en la factura: control total de tu campaña</span>
+            </div>
+            <p className="panel-foot-cta">
+              Accede a tu campaña arriba y lanza tu primer envío hoy.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   )
