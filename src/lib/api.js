@@ -4,8 +4,6 @@
  * En desarrollo sin .env: peticiones a mismo origen y Vite proxy reenvía a la API.
  */
 const DEFAULT_API_BASE = 'https://osdemsventas.site'
-/** URL del formulario de contacto (IA Native). Por defecto osdemsventas.com */
-const DEFAULT_CONTACT_API = 'https://osdemsventas.com'
 const API_BASE = (import.meta.env.VITE_API_BASE && String(import.meta.env.VITE_API_BASE).trim()) || DEFAULT_API_BASE
 const API_BASE_URL = import.meta.env.DEV && !import.meta.env.VITE_API_BASE
   ? '' // en dev, /api → proxy en vite.config.js
@@ -205,37 +203,18 @@ export async function adminUpdateUser(userId, payload) {
 }
 
 /**
- * Formulario de contacto. POST /api/v1/contact
- * Formato IA Native: full_name, email, phone, company, participant_count, preferred_date, comments
- * URL por defecto: VITE_CONTACT_API_URL o API_BASE + /api/v1/contact
- * @param {{ name: string, email: string, phone?: string, company?: string, pax?: string, date?: string, comments?: string }} data
+ * Formulario de contacto/diagnóstico. POST /api/v1/contact
+ * @param {{ name: string, email: string, phone?: string, message?: string }} data
  */
-function paxToParticipantCount(pax) {
-  if (pax === '1-5') return 5
-  if (pax === '6-10') return 10
-  if (pax === '11-15' || pax === '15+') return 15
-  return null
-}
-
 export async function contact(data) {
-  const contactBase = (import.meta.env.VITE_CONTACT_API_URL && String(import.meta.env.VITE_CONTACT_API_URL).trim()) || DEFAULT_CONTACT_API
-  const base = contactBase.startsWith('http') ? contactBase : `https://${contactBase}`
-  const url = `${base}/api/v1/contact`
-
-  const name = String(data?.name || '').trim()
-  const email = String(data?.email || '').trim()
-  if (!email) throw new Error('El correo es obligatorio.')
-
+  const url = `${API_BASE_URL}/api/v1/contact`
   const body = {
-    full_name: name,
-    email,
+    name: String(data?.name || '').trim(),
+    email: String(data?.email || '').trim(),
     phone: String(data?.phone || '').trim(),
-    company: String(data?.company || '').trim(),
-    participant_count: paxToParticipantCount(data?.pax),
-    preferred_date: String(data?.date || '').trim(),
-    comments: String(data?.comments || data?.message || '').trim(),
+    message: String(data?.message || '').trim(),
   }
-
+  if (!body.email) throw new Error('El correo es obligatorio.')
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -250,6 +229,42 @@ export async function contact(data) {
   }
   if (!res.ok) {
     const msg = json?.message || json?.error || 'No se pudo enviar el formulario. Intenta más tarde.'
+    throw new Error(msg)
+  }
+  return json
+}
+
+/**
+ * Envío de formulario IA Native (osdemsventas.com/api/v1/contact).
+ * Formato esperado: full_name, email, phone, company, participant_count, preferred_date, comments
+ * @param {{ full_name: string, email: string, phone?: string, company?: string, participant_count?: number, preferred_date?: string, comments?: string }} data
+ */
+const CONTACT_API_URL = 'https://osdemsventas.com/api/v1/contact'
+export async function sendContactIANative(data) {
+  const body = {
+    full_name: String(data?.full_name || '').trim(),
+    email: String(data?.email || '').trim(),
+    phone: String(data?.phone || '').trim(),
+    company: String(data?.company || '').trim(),
+    participant_count: data?.participant_count ?? null,
+    preferred_date: String(data?.preferred_date || '').trim() || null,
+    comments: String(data?.comments || '').trim(),
+  }
+  if (!body.email) throw new Error('El correo es obligatorio.')
+  const res = await fetch(CONTACT_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+  const text = await res.text()
+  let json
+  try {
+    json = text ? JSON.parse(text) : {}
+  } catch {
+    json = { message: text || 'Error al enviar' }
+  }
+  if (!res.ok) {
+    const msg = json?.message || json?.error || 'No se pudo enviar. Intenta más tarde.'
     throw new Error(msg)
   }
   return json

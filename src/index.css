@@ -6422,17 +6422,7 @@ h4, h5, h6, button, input, select, textarea, label {
 @media (max-width: 640px) {
   .intro-diagnosis-row { grid-template-columns: 1fr; }
 }
-.intro-diagnosis-label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 0.4rem;
-  text-align: left;
-}
-.intro-diagnosis-group input,
-.intro-diagnosis-group select,
-.intro-diagnosis-group textarea {
+.intro-diagnosis-group input {
   width: 100%;
   padding: 1rem 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -6443,29 +6433,13 @@ h4, h5, h6, button, input, select, textarea, label {
   background: #334155;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-.intro-diagnosis-group select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  padding-right: 2.5rem;
-}
-.intro-diagnosis-group textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-.intro-diagnosis-group input::placeholder,
-.intro-diagnosis-group textarea::placeholder { color: #94a3b8; }
-.intro-diagnosis-group input:focus,
-.intro-diagnosis-group select:focus,
-.intro-diagnosis-group textarea:focus {
+.intro-diagnosis-group input::placeholder { color: #94a3b8; }
+.intro-diagnosis-group input:focus {
   outline: none;
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
   background: #475569;
 }
-.intro-diagnosis-group--full { grid-column: 1 / -1; }
 .intro-diagnosis-btn {
   margin-top: 0.25rem;
   padding: 0.9rem 1.5rem;
