@@ -5,6 +5,7 @@ const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80'
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'
 const TIER_BG_IMAGE = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=60'
+const ROI_BG_IMAGE = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=60'
 
 const VALUE_CARDS = [
   {
@@ -229,6 +230,8 @@ export function IntroPage() {
 
       {/* Apartado ROI — para directivos y dueños */}
       <section className="intro-roi intro-scroll-section" ref={setRef(3)}>
+        <div className="intro-roi-bg" style={{ backgroundImage: `url(${ROI_BG_IMAGE})` }} aria-hidden />
+        <div className="intro-roi-overlay" aria-hidden />
         <div className="intro-wrap intro-roi-inner">
           <h2 className="intro-roi-title">ROI: lo que los directivos necesitan ver</h2>
           <p className="intro-roi-lead">

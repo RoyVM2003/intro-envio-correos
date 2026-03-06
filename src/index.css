@@ -5926,13 +5926,30 @@ h4, h5, h6, button, input, select, textarea, label {
   .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
 }
 
-/* Apartado ROI — texto para directivos */
+/* Apartado ROI — texto para directivos + imagen de fondo */
 .intro-roi {
   padding: 3rem 0;
-  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+  position: relative;
+  overflow: hidden;
   color: #0f172a;
+  background: #f1f5f9;
+}
+.intro-roi-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+}
+.intro-roi-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 250, 252, 0.9) 100%);
 }
 .intro-roi-inner {
+  position: relative;
+  z-index: 1;
   max-width: 720px;
   margin: 0 auto;
 }
