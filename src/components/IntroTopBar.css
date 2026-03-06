@@ -1,51 +1,54 @@
-.intro-top-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.intro-top-bar--fixed {
-  position: fixed !important;
-  top: 1.25rem !important;
-  right: 1.5rem !important;
-  z-index: 2147483647 !important;
+/* Contenedor alineado: flex, fijo arriba a la derecha */
+.intro-top-bar .intro-top-bar-lang-wrap {
+  position: relative;
 }
 
 .intro-top-bar-link {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: color 0.2s, background 0.2s;
+  transform: none !important;
 }
 
 .intro-top-bar-link:hover {
-  color: var(--gold-300);
-  background: rgba(0, 0, 0, 0.4);
-  border-color: rgba(212, 168, 58, 0.35);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  transform: none !important;
 }
 
 .intro-top-bar-login {
-  background: rgba(0, 0, 0, 0.35);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.25);
+  transform: none !important;
 }
 
 .intro-top-bar-login:hover {
-  background: rgba(0, 0, 0, 0.5);
-  border-color: rgba(212, 168, 58, 0.4);
+  background: rgba(0, 0, 0, 0.4);
+  transform: none !important;
 }
 
-/* LanguageSelector dentro de la barra */
-.intro-top-bar .lang-selector {
+.intro-top-bar-lang-wrap .lang-selector {
   position: relative !important;
   top: auto !important;
   left: auto !important;
   right: auto !important;
+}
+
+.intro-top-bar-lang-wrap .lang-selector-trigger {
+  transform: none !important;
+  padding: 0.4rem 0.75rem !important;
+  font-size: 0.85rem !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.intro-top-bar-lang-wrap .lang-selector-trigger:hover {
+  transform: none !important;
+  background: rgba(0, 0, 0, 0.35) !important;
 }

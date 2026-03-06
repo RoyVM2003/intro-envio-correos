@@ -38,16 +38,13 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-body);
   margin: 0;
   padding: 0;
-  min-height: 100vh;
   width: 100%;
-  overflow-x: clip;
   font-size: 16px;
   line-height: 1.6;
   background: #edf1f7;
@@ -56,18 +53,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  width: 100%;
-  min-height: 100vh;
-}
-
-/* IntroTopBar: portaled a body, SIEMPRE fijo (no afectado por scroll) */
-body > .intro-top-bar {
-  position: fixed !important;
-  top: 1.25rem !important;
-  right: 1.5rem !important;
-  left: auto !important;
-  z-index: 2147483647 !important;
+#app {
+  display: block;
 }
 
 /* Selector de idioma (globo) — visible en todas las pestañas */

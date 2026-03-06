@@ -16,8 +16,10 @@ export default function App() {
   return (
     <AuthProvider>
       <LanguageProvider>
-        {isIntro ? <IntroTopBar /> : <LanguageSelector />}
-        <Routes>
+        {isIntro && <IntroTopBar />}
+        <main id="root">
+          {!isIntro && <LanguageSelector />}
+          <Routes>
           <Route path="/" element={<IntroPage />} />
           <Route path="/login" element={<PanelLoginPage />} />
           <Route path="/acceso" element={<LoginPage />} />
@@ -25,7 +27,8 @@ export default function App() {
           <Route path="/panel" element={<PanelPage />} />
           <Route path="/campana" element={<CampanaPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+          </Routes>
+        </main>
       </LanguageProvider>
     </AuthProvider>
   )
