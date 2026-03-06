@@ -20,7 +20,7 @@ export function LanguageSelector({ usePortal = true }) {
   const current = LANGUAGES.find((l) => l.code === lang) || LANGUAGES[0]
 
   const content = (
-    <div className="lang-selector" ref={ref}>
+    <div className={`lang-selector ${!usePortal ? 'lang-selector--inline' : ''}`} ref={ref}>
       <button
         type="button"
         className="lang-selector-trigger"

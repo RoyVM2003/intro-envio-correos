@@ -61,6 +61,15 @@ body {
   min-height: 100vh;
 }
 
+/* IntroTopBar: portaled a body, SIEMPRE fijo (no afectado por scroll) */
+body > .intro-top-bar {
+  position: fixed !important;
+  top: 1.25rem !important;
+  right: 1.5rem !important;
+  left: auto !important;
+  z-index: 2147483647 !important;
+}
+
 /* Selector de idioma (globo) — visible en todas las pestañas */
 .lang-selector {
   position: fixed;
