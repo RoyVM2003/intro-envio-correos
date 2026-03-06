@@ -43,3 +43,25 @@
   left: auto !important;
   right: auto !important;
 }
+.intro-top-strip {
+  position: fixed; /* <--- CAMBIA ESTO */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999; 
+  pointer-events: none; /* No bloquea el scroll */
+}
+
+.intro-top-strip-inner {
+  pointer-events: auto; /* PERMITE hacer clic en los botones */
+  /* ... resto de tus estilos ... */
+}
+
+/* Ajuste opcional para que se vea mejor sobre el fondo */
+.intro-top-bar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.5rem;
+  border-radius: 12px;
+}
