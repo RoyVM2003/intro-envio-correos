@@ -60,7 +60,11 @@ export function ExcelImport({ onImportSuccess }) {
         err.data?.message ||
         err.data?.error ||
         (err.data && typeof err.data === 'object' ? JSON.stringify(err.data) : err.message)
-      setMessage({ text: t('campana.excelFail') + ' ' + msg, type: 'err' })
+      const is401 = err.status === 401
+      const text = is401
+        ? (t('campana.excelFail') + ' No autorizado (401). Cierra sesión y vuelve a iniciar sesión; si sigue fallando, el backend debe aceptar el header Authorization para este usuario.')
+        : (t('campana.excelFail') + ' ' + msg)
+      setMessage({ text, type: 'err' })
     } finally {
       setLoading(false)
     }

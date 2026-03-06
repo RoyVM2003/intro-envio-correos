@@ -9,6 +9,14 @@ export default defineConfig({
       '/api': {
         target: 'https://osdemsventas.site',
         changeOrigin: true,
+        configure: (proxy) => {
+          proxy.on('proxyReq', (proxyReq, req) => {
+            // Asegurar que Authorization se reenvía (algunos proxies lo omiten)
+            if (req.headers?.authorization) {
+              proxyReq.setHeader('Authorization', req.headers.authorization)
+            }
+          })
+        },
       },
     },
   },

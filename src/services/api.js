@@ -1,8 +1,5 @@
-import { API_BASE, TOKEN_KEY } from '../config/api'
-
-function getToken() {
-  return sessionStorage.getItem(TOKEN_KEY)
-}
+import { API_BASE } from '../config/api'
+import { getToken } from '../lib/api'
 
 export async function apiEmail(endpoint, options = {}) {
   const token = getToken()
