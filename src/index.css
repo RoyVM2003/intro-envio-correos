@@ -5909,6 +5909,7 @@ h4, h5, h6, button, input, select, textarea, label {
   margin: 0 0 1.5rem;
   text-align: center;
   line-height: 1.4;
+  letter-spacing: 0.06em;
 }
 .intro-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
 .intro-card {
@@ -5962,10 +5963,10 @@ h4, h5, h6, button, input, select, textarea, label {
   font-weight: 800;
   margin: 0 0 0.5rem;
   color: var(--navy-900);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   line-height: 1.35;
 }
-.intro-card-desc { font-size: 1rem; color: #64748b; line-height: 1.65; margin: 0; text-align: justify; letter-spacing: 0.025em; }
+.intro-card-desc { font-size: 1rem; color: #64748b; line-height: 1.65; margin: 0; text-align: justify; letter-spacing: 0.055em; }
 .intro-card-accent {
   position: absolute;
   bottom: 0; left: 1.75rem; right: 1.75rem;
@@ -5999,10 +6000,10 @@ h4, h5, h6, button, input, select, textarea, label {
   font-weight: 700;
   color: var(--navy-900);
   margin: 0 0 0.6rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
   line-height: 1.35;
 }
-.intro-info-box-text { font-size: 1.05rem; line-height: 1.8; color: #475569; margin: 0; text-align: justify; letter-spacing: 0.028em; }
+.intro-info-box-text { font-size: 1.05rem; line-height: 1.8; color: #475569; margin: 0; text-align: justify; letter-spacing: 0.055em; }
 @media (min-width: 769px) {
   .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
 }
