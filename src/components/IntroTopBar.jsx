@@ -12,7 +12,11 @@ export function IntroTopBar() {
   const { t } = useLanguage()
 
   const content = (
-    <div className="intro-top-bar">
+    <div
+      id="intro-top-bar-fixed"
+      className="intro-top-bar"
+      style={{ position: 'fixed', top: '1.25rem', right: '1.5rem', zIndex: 99999 }}
+    >
       <a
         href="https://osdemsdigital.com"
         target="_blank"
