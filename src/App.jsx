@@ -2,7 +2,6 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { LanguageSelector } from './components/LanguageSelector'
-import { IntroTopBar } from './components/IntroTopBar'
 import { IntroPage } from './pages/IntroPage'
 import { LoginPage } from './pages/LoginPage'
 import { PanelLoginPage } from './pages/PanelLoginPage'
@@ -16,7 +15,7 @@ export default function App() {
   return (
     <AuthProvider>
       <LanguageProvider>
-        {isIntro ? <IntroTopBar /> : <LanguageSelector />}
+        {!isIntro && <LanguageSelector />}
         <Routes>
           <Route path="/" element={<IntroPage />} />
           <Route path="/login" element={<PanelLoginPage />} />

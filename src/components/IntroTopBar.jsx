@@ -1,18 +1,17 @@
-import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { LanguageSelector } from './LanguageSelector'
 import './IntroTopBar.css'
 
 /**
- * Barra fija arriba a la derecha: OSDEMS Digital | Idiomas | Iniciar sesión
- * Renderizada en document.body vía portal para que position:fixed nunca se rompa
+ * Enlaces: OSDEMS Digital | Idiomas | Iniciar sesión
+ * Se usa dentro de intro-top-strip (sticky) en IntroPage
  */
 export function IntroTopBar() {
   const { t } = useLanguage()
 
-  const content = (
-    <div id="intro-top-bar-fixed" className="intro-top-bar">
+  return (
+    <div className="intro-top-bar">
       <a
         href="https://osdemsdigital.com"
         target="_blank"
@@ -27,6 +26,4 @@ export function IntroTopBar() {
       </Link>
     </div>
   )
-
-  return createPortal(content, document.body)
 }
