@@ -6043,13 +6043,30 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-tier-intro { font-size: 1.05rem; color: #64748b; margin: 0 0 1.25rem; line-height: 1.6; }
 .intro-tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .intro-tier-card {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  position: relative;
   border-radius: 12px;
   padding: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 20px rgba(11, 30, 51, 0.08);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.intro-tier-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--tier-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  z-index: 0;
+}
+.intro-tier-card > * {
+  position: relative;
+  z-index: 1;
 }
 .intro-tier-badge {
   display: inline-block;

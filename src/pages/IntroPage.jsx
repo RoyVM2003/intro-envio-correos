@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80'
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'
+const TIER_BG_IMAGE = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=60'
 
 const VALUE_CARDS = [
   {
@@ -248,8 +249,8 @@ export function IntroPage() {
       </section>
 
       {/* Niveles Tier 1, 2, 3 (detalle) — imagen de fondo ligera */}
-      <section className="intro-tier intro-scroll-section" ref={setRef(4)}>
-        <div className="intro-tier-bg" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=60)' }} aria-hidden />
+      <section className="intro-tier intro-scroll-section" ref={setRef(4)} style={{ '--tier-bg-image': `url(${TIER_BG_IMAGE})` }}>
+        <div className="intro-tier-bg" style={{ backgroundImage: `url(${TIER_BG_IMAGE})` }} aria-hidden />
         <div className="intro-tier-overlay" aria-hidden />
         <div className="intro-wrap intro-tier-content">
           <h2 className="intro-tier-main-title">Servicio que no duerme</h2>
