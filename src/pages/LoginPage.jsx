@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { login, setToken, setEmail, getToken } from '../lib/api'
+import { login, setToken, setEmail } from '../lib/api'
 import { useLanguage } from '../context/LanguageContext'
 
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
@@ -20,13 +20,6 @@ export function LoginPage() {
   const [message, setMessage] = useState({ text: '', type: '' })
 
   const showMsg = (text, type) => setMessage({ text, type })
-
-  useEffect(() => {
-    if (getToken()) {
-      navigate('/campana', { replace: true })
-      return
-    }
-  }, [navigate])
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -61,8 +54,6 @@ export function LoginPage() {
       setLoading(false)
     }
   }
-
-  if (getToken()) return null
 
   return (
     <div id="loginPage" className="login-page">
