@@ -27,7 +27,6 @@ export function CampanaPage() {
   const [hasImportedExcel, setHasImportedExcel] = useState(false)
   const [hasUsedAI, setHasUsedAI] = useState(false)
   const [hasSentCampaign, setHasSentCampaign] = useState(false)
-  const [showSentOverlay, setShowSentOverlay] = useState(false)
 
   const hasSubjectAndBody = !!(subject?.trim() && body?.trim())
   /* Paso activo en la barra de progreso (solo visual): 1 → 2 → 3 según avance */
@@ -181,16 +180,6 @@ export function CampanaPage() {
         </div>
 
         <div className={`workflow-root${hasSentCampaign ? ' workflow-root--sent' : ''}`}>
-          {hasSentCampaign && showSentOverlay && (
-            <div className="wf-sent-overlay" aria-live="polite">
-              <button type="button" className="wf-sent-close" onClick={() => { setShowSentOverlay(false); setHasSentCampaign(false) }} aria-label="Cerrar mensaje de campaña enviada">
-                <i className="fas fa-times" />
-              </button>
-              <div className="wf-sent-msg">
-                <p className="wf-sent-msg-text">¡Listo! Tu campaña se ha enviado. Los correos llegarán a los contactos de tu Excel.</p>
-              </div>
-            </div>
-          )}
           <div id="wf-strip" className={`wf-strip reveal${hasSentCampaign ? ' wf-strip--faded' : ''}`}>
             <div className="wf-strip-inner">
               <h2 className="wf-strip-title">Tu campaña, paso a paso</h2>
@@ -216,9 +205,6 @@ export function CampanaPage() {
           <div className={`wf-cards wf-cards--single${hasSentCampaign ? ' wf-cards--faded' : ''}`} data-view="grid-3-pasos">
             <div className="wrap">
               <Message text={globalMsg.text} type={globalMsg.type} />
-              <p className="wf-cards-grid-label" style={{ margin: '0 0 0.75rem', fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>
-                Vista en grid: Paso 1 y 2 arriba · Paso 3 abajo
-              </p>
               <div
                 className="wf-cards-grid"
                 style={{
@@ -251,7 +237,7 @@ export function CampanaPage() {
                   </div>
                 </section>
                 <section id="step-3" className="wf-grid-pane wf-grid-pane--full" style={{ gridColumn: '1 / -1' }}>
-                  <SendCampaign subject={subject} message={body} hasImportedExcel={hasImportedExcel} onSendSuccess={() => { setHasSentCampaign(true); setShowSentOverlay(true) }} />
+                  <SendCampaign subject={subject} message={body} hasImportedExcel={hasImportedExcel} onSendSuccess={() => setHasSentCampaign(true)} />
                 </section>
               </div>
             </div>

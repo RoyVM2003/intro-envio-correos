@@ -4766,7 +4766,7 @@ h4, h5, h6, button, input, select, textarea, label {
   background: linear-gradient(180deg, rgba(8, 20, 38, 0.98) 0%, rgba(11, 30, 51, 0.95) 100%);
   border-top: 1px solid rgba(212, 168, 58, 0.12);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 2rem 1.25rem;
+  padding: 1rem 1.25rem;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
 }
 
@@ -4971,7 +4971,7 @@ h4, h5, h6, button, input, select, textarea, label {
 
 /* Grid de 3 pasos: 1 y 2 arriba lado a lado, 3 abajo (para probar APIs) — prioridad en build */
 .wf-cards.wf-cards--single {
-  padding-top: 0.75rem;
+  padding-top: 0;
   padding-bottom: 3rem;
 }
 .wf-cards.wf-cards--single .wf-cards-grid,
