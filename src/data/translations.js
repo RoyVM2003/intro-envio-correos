@@ -252,6 +252,7 @@ const es = {
     assignSuccess: 'Rol asignado correctamente.',
     assignError: 'No se pudo asignar el rol.',
     errorLoad: 'No se pudieron cargar los usuarios. Puede que no tengas permisos de administrador.',
+    errorNoId: 'No se pudo obtener el ID del usuario. Contacta al desarrollador.',
     linkAdmin: 'Administrar usuarios',
   },
   panel: {
@@ -519,6 +520,7 @@ const en = {
     assignSuccess: 'Role assigned successfully.',
     assignError: 'Could not assign role.',
     errorLoad: 'Could not load users. You may not have administrator permissions.',
+    errorNoId: 'Could not get user ID. Contact the developer.',
     linkAdmin: 'Manage users',
   },
   panel: {

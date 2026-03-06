@@ -172,7 +172,8 @@ export async function adminGetUsers() {
     data = { message: text }
   }
   if (!res.ok) throw new Error(data?.message || data?.error || 'No tienes permisos de administrador.')
-  return Array.isArray(data) ? data : data?.users ?? data?.data ?? []
+  const list = Array.isArray(data) ? data : data?.users ?? data?.data ?? data?.items ?? []
+  return Array.isArray(list) ? list : []
 }
 
 /**
@@ -181,7 +182,8 @@ export async function adminGetUsers() {
 export async function adminUpdateUser(userId, payload) {
   const token = getToken()
   if (!token) throw new Error('Debes iniciar sesión.')
-  const res = await fetch(`${API_BASE_URL}/api/v1/admin/users/${userId}`, {
+  const url = `${API_BASE_URL}/api/v1/admin/users/${encodeURIComponent(userId)}`
+  const res = await fetch(url, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     body: JSON.stringify(payload),
@@ -189,11 +191,14 @@ export async function adminUpdateUser(userId, payload) {
   const text = await res.text()
   let data
   try {
-    data = JSON.parse(text)
+    data = text ? JSON.parse(text) : {}
   } catch {
-    data = { message: text }
+    data = { message: text || 'Error desconocido' }
   }
-  if (!res.ok) throw new Error(data?.message || data?.error || 'No se pudo actualizar.')
+  if (!res.ok) {
+    const msg = data?.message || data?.error || data?.msg || (Array.isArray(data?.errors) && data.errors[0]?.msg) || 'No se pudo actualizar.'
+    throw new Error(typeof msg === 'string' ? msg : JSON.stringify(msg))
+  }
   return data
 }
 

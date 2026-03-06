@@ -6696,6 +6696,11 @@ h4, h5, h6, button, input, select, textarea, label {
   border-radius: 10px;
   font-size: 0.95rem;
 }
+.admin-msg--info {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
 .admin-msg--ok {
   background: rgba(16, 185, 129, 0.2);
   color: #6ee7b7;

@@ -41,23 +41,24 @@ export function AdminUsersPage() {
   }
 
   async function assignAdmin(user) {
-    const id = user?.id ?? user?.userId
-    if (!id) return
+    const id = user?.id ?? user?.userId ?? user?.user_id ?? user?._id
+    if (!id) {
+      setMessage({ text: t('admin.errorNoId'), type: 'err' })
+      return
+    }
     setUpdatingId(id)
-    setMessage({ text: '', type: 'info' })
+    setMessage({ text: t('admin.assigning'), type: 'info' })
     try {
-      await adminUpdateUser(id, { role: 'administrator' })
+      // Probar primero role, luego panel_role (el backend puede usar uno u otro)
+      try {
+        await adminUpdateUser(id, { role: 'administrator' })
+      } catch (e1) {
+        await adminUpdateUser(id, { panel_role: 'administrator' })
+      }
       setMessage({ text: t('admin.assignSuccess'), type: 'ok' })
       loadUsers()
     } catch (err) {
-      // Si falla con "role", probar panel_role (backends varían)
-      try {
-        await adminUpdateUser(id, { panel_role: 'administrator' })
-        setMessage({ text: t('admin.assignSuccess'), type: 'ok' })
-        loadUsers()
-      } catch (err2) {
-        setMessage({ text: err?.message || err2?.message || t('admin.assignError'), type: 'err' })
-      }
+      setMessage({ text: err?.message || t('admin.assignError'), type: 'err' })
     } finally {
       setUpdatingId(null)
     }
@@ -105,11 +106,11 @@ export function AdminUsersPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((u) => {
-                    const id = u?.id ?? u?.userId
+                  {users.map((u, idx) => {
+                    const id = u?.id ?? u?.userId ?? u?.user_id ?? u?._id
                     const admin = isAdmin(u)
                     return (
-                      <tr key={id}>
+                      <tr key={id ?? `user-${idx}`}>
                         <td>{email(u)}</td>
                         <td>{name(u)}</td>
                         <td>
