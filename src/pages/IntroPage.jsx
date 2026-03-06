@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { DiagnosisForm } from '../components/DiagnosisForm'
+import { IntroFooter } from '../components/IntroFooter'
 
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80'
@@ -320,6 +321,8 @@ export function IntroPage() {
           <p className="intro-cta-text">{t('intro.cta.text')}</p>
         </div>
       </section>
+
+      <IntroFooter />
     </div>
   )
 }

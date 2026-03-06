@@ -101,6 +101,18 @@ const es = {
       heading: 'Tu siguiente paso',
       text: 'Accede al panel, lanza tus campañas y mide el ROI en tiempo real. Todo lo que necesitas, en un solo lugar.',
     },
+    footer: {
+      techTitle: 'Tecnología e innovación',
+      tech1: 'Dashboards interactivos',
+      tech2: 'Power BI',
+      tech3: 'Desarrollo en Python',
+      tech4: 'Laravel',
+      solutionsTitle: 'Nuestras soluciones',
+      sol1: 'Email marketing automatizado',
+      sol2: 'Diseño web (Web Design)',
+      sol3: 'Google Ads',
+      sol4: 'Automatización de ventas',
+    },
     diagnosis: {
       title: 'Solicita tu Diagnóstico Estratégico',
       subtitle: '',
@@ -368,6 +380,18 @@ const en = {
     cta: {
       heading: 'Your next step',
       text: 'Access the panel, launch your campaigns and measure ROI in real time. Everything you need, in one place.',
+    },
+    footer: {
+      techTitle: 'Technology & innovation',
+      tech1: 'Interactive dashboards',
+      tech2: 'Power BI',
+      tech3: 'Python development',
+      tech4: 'Laravel',
+      solutionsTitle: 'Our solutions',
+      sol1: 'Automated email marketing',
+      sol2: 'Web design',
+      sol3: 'Google Ads',
+      sol4: 'Sales automation',
     },
     diagnosis: {
       title: 'Request your Strategic Diagnosis',
