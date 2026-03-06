@@ -4,12 +4,10 @@ import { login, setToken, setEmail } from '../lib/api'
 import { useLanguage } from '../context/LanguageContext'
 
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
-const HARDCODED_EMAIL = 'marketing@osdemsdigital.com'
-const HARDCODED_PASSWORD = 'Osdems12345672026@@@'
 
 /**
  * Login con card (navy/gold). Ruta: /acceso. Tras login → /campana.
- * La cuenta marketing@osdemsdigital.com se acepta sin llamar a la API.
+ * Login siempre vía API.
  */
 export function LoginPage() {
   const navigate = useNavigate()
@@ -29,16 +27,8 @@ export function LoginPage() {
     }
     setLoading(true)
     showMsg(t('login.connecting'), 'info')
-    if (email.trim().toLowerCase() === HARDCODED_EMAIL && password === HARDCODED_PASSWORD) {
-      setToken('hardcoded')
-      setEmail(email.trim())
-      showMsg('', '')
-      navigate('/campana', { replace: true })
-      setLoading(false)
-      return
-    }
     try {
-      const data = await login(email, password)
+      const data = await login(email.trim(), password)
       const token = data.token || data.accessToken || data.access_token
       if (!token) {
         showMsg(t('login.errorApi'), 'err')

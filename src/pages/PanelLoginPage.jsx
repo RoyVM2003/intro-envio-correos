@@ -3,17 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import { useAuth } from '../context/AuthContext'
 import { useLanguage } from '../context/LanguageContext'
-import { setToken, setEmail } from '../lib/api'
 import { FormGroup } from '../components/FormGroup'
 import { Message } from '../components/Message'
 import { forgotPassword, verifyEmail, resendVerification } from '../services/authService'
 
-const HARDCODED_EMAIL = 'marketing@osdemsdigital.com'
-const HARDCODED_PASSWORD = 'Osdems12345672026@@@'
-
 /**
  * Login con video (CONFIGURA TU SUEÑO). Ruta: /login. Tras hacer login → /panel.
- * La cuenta marketing@osdemsdigital.com se acepta sin llamar a la API.
+ * Login siempre vía API.
  */
 export function PanelLoginPage() {
   const navigate = useNavigate()
@@ -43,14 +39,6 @@ export function PanelLoginPage() {
     if (!email || !password) return
     setLoginLoading(true)
     setLoginMsg({ text: 'Conectando...', type: 'info' })
-    if (email.toLowerCase() === HARDCODED_EMAIL && password === HARDCODED_PASSWORD) {
-      setToken('hardcoded')
-      setEmail(email)
-      setLoginMsg({ text: '', type: 'info' })
-      navigate('/panel', { replace: true })
-      setLoginLoading(false)
-      return
-    }
     try {
       await login(email, password)
       setLoginMsg({ text: '', type: 'info' })
