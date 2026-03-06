@@ -23,7 +23,7 @@ const es = {
       tagline: 'Menos tiempo perdido. Más resultados. ROI visible desde el primer día. Escala con lo que vende.',
     },
     strip: {
-      phrases: ['ROI visible', 'Transformación digital', 'I+D e innovación', 'Soporte 24/7', 'Consultoría de negocio', 'Resultados medibles', 'Escala con tecnología', 'Helpdesk internacional', 'Campañas que impulsan', 'Métricas en tiempo real', 'Soporte Tier 1 a Tier 3'],
+      phrases: ['ROI visible', 'Transformación digital', 'R&D e innovación', 'Soporte 24/7', 'Consultoría de negocio', 'Resultados medibles', 'Escala con tecnología', 'Helpdesk internacional', 'Campañas que impulsan', 'Métricas en tiempo real', 'Soporte Tier 1 a Tier 3'],
     },
     split: {
       title: 'Qué ofrece la aplicación',

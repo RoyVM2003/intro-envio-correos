@@ -72,7 +72,7 @@ const CONTINUITY_CARDS = [
 export function IntroPage() {
   const { t } = useLanguage()
   const sectionRefs = useRef([])
-  const stripPhrases = Array.isArray(t('intro.strip.phrases')) ? t('intro.strip.phrases') : ['ROI visible', 'Transformación digital', 'I+D e innovación', 'Soporte 24/7', 'Consultoría de negocio', 'Resultados medibles', 'Escala con tecnología', 'Helpdesk internacional', 'Campañas que impulsan', 'Métricas en tiempo real', 'Soporte Tier 1 a Tier 3']
+  const stripPhrases = Array.isArray(t('intro.strip.phrases')) ? t('intro.strip.phrases') : ['ROI visible', 'Transformación digital', 'R&D e innovación', 'Soporte 24/7', 'Consultoría de negocio', 'Resultados medibles', 'Escala con tecnología', 'Helpdesk internacional', 'Campañas que impulsan', 'Métricas en tiempo real', 'Soporte Tier 1 a Tier 3']
 
   useEffect(() => {
     const observer = new IntersectionObserver(
