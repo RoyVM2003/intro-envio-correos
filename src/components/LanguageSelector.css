@@ -50,11 +50,10 @@
 
 .lang-selector-dropdown {
   position: absolute;
-  bottom: 100%;
-  margin-bottom: 0.35rem;
-  top: auto;
+  top: 0;
   right: 0;
   left: auto;
+  transform: translateY(calc(-100% - 0.35rem));
   width: max-content;
   max-width: 180px;
   margin: 0;
