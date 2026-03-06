@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { DiagnosisForm } from '../components/DiagnosisForm'
 
@@ -103,10 +102,6 @@ export function IntroPage() {
       <section className="intro-hero">
         <div className="intro-hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
         <div className="intro-hero-overlay" />
-        <div className="intro-hero-top-links">
-          <a href="https://osdemsdigital.com" target="_blank" rel="noopener noreferrer" className="intro-hero-digital">{t('common.digitalLink')}</a>
-          <Link to="/login" className="intro-hero-login">{t('common.login')}</Link>
-        </div>
         <div className="intro-hero-content">
           <div className="intro-hero-eyebrow">{t('intro.hero.eyebrow')}</div>
           <h1 className="intro-hero-title">

@@ -1,7 +1,8 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { LanguageSelector } from './components/LanguageSelector'
+import { IntroTopBar } from './components/IntroTopBar'
 import { IntroPage } from './pages/IntroPage'
 import { LoginPage } from './pages/LoginPage'
 import { PanelLoginPage } from './pages/PanelLoginPage'
@@ -11,10 +12,13 @@ import { CampanaPage } from './pages/CampanaPage'
 import { AdminUsersPage } from './pages/AdminUsersPage'
 
 export default function App() {
+  const location = useLocation()
+  const isIntro = location.pathname === '/'
+
   return (
     <AuthProvider>
       <LanguageProvider>
-        <LanguageSelector />
+        {isIntro ? <IntroTopBar /> : <LanguageSelector />}
         <Routes>
           <Route path="/" element={<IntroPage />} />
           <Route path="/login" element={<PanelLoginPage />} />

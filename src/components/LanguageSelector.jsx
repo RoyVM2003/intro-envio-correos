@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext'
 import { LANGUAGES } from '../data/translations'
 import './LanguageSelector.css'
 
-export function LanguageSelector() {
+export function LanguageSelector({ usePortal = true }) {
   const { lang, setLang, t } = useLanguage()
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
@@ -55,5 +55,5 @@ export function LanguageSelector() {
     </div>
   )
 
-  return createPortal(content, document.body)
+  return usePortal ? createPortal(content, document.body) : content
 }
