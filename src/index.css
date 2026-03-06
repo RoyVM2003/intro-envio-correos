@@ -6156,7 +6156,7 @@ h4, h5, h6, button, input, select, textarea, label {
   color: #f9fafb;
 }
 .intro-continuity-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -6222,7 +6222,7 @@ h4, h5, h6, button, input, select, textarea, label {
   margin: 0 0 0.75rem;
   line-height: 1.35;
 }
-.intro-continuity-card-text { font-size: 1rem; line-height: 1.75; color: #475569; margin: 0; flex: 1; text-align: justify; }
+.intro-continuity-card-text { font-size: 1.05rem; line-height: 1.8; color: #475569; margin: 0; flex: 1; text-align: center; }
 .intro-continuity-card-accent {
   margin-top: 1.25rem;
   height: 3px;
@@ -6371,7 +6371,7 @@ h4, h5, h6, button, input, select, textarea, label {
   background: #0f172a;
   color: #fff;
 }
-.intro-diagnosis-inner { max-width: 460px; margin: 0 auto; }
+.intro-diagnosis-inner { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
 .intro-diagnosis-card {
   background: #1e293b;
   border: 1px solid rgba(255, 255, 255, 0.08);

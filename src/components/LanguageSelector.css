@@ -1,8 +1,8 @@
 .lang-selector {
   position: fixed !important;
-  bottom: 2rem !important;
+  top: 1rem !important;
   right: 1.5rem !important;
-  top: auto !important;
+  bottom: auto !important;
   left: auto !important;
   z-index: 9999;
 }
@@ -50,10 +50,10 @@
 
 .lang-selector-dropdown {
   position: absolute;
-  top: 0;
+  top: calc(100% + 0.35rem);
   right: 0;
   left: auto;
-  transform: translateY(calc(-100% - 0.35rem));
+  transform: none;
   width: max-content;
   max-width: 180px;
   margin: 0;
