@@ -5940,7 +5940,7 @@ h4, h5, h6, button, input, select, textarea, label {
   line-height: 1.4;
   letter-spacing: 0.06em;
 }
-.intro-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem 2.75rem; max-width: 1100px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+.intro-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem 3.5rem; max-width: 1100px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
 .intro-card {
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -6014,7 +6014,7 @@ h4, h5, h6, button, input, select, textarea, label {
   border-radius: 2px;
   background: linear-gradient(90deg, var(--gold-600), var(--gold-400));
 }
-@media (max-width: 768px) { .intro-cards-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .intro-cards-grid { grid-template-columns: 1fr; gap: 3rem; } }
 .intro-info-boxes {
   padding: 3.5rem 0;
   background: linear-gradient(180deg, #0b1e33 0%, #0f2744 50%, #123765 100%);
@@ -6034,7 +6034,7 @@ h4, h5, h6, button, input, select, textarea, label {
   padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 3rem;
   position: relative;
   z-index: 1;
 }
@@ -6095,7 +6095,7 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-info-box--dark .intro-info-box-text { opacity: 0.95; }
 .intro-info-box--accent .intro-info-box-text { color: #334155; }
 @media (min-width: 769px) {
-  .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: stretch; }
+  .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: stretch; }
 }
 
 /* Apartado ROI — directivos, con más vida y creatividad */

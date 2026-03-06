@@ -9,16 +9,17 @@
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 4vw, 2.5rem);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem 4rem;
   justify-content: center;
+  text-align: center;
 }
 
 .intro-footer-block {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .intro-footer-title {
