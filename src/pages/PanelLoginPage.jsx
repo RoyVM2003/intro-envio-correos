@@ -7,9 +7,11 @@ import { FormGroup } from '../components/FormGroup'
 import { Message } from '../components/Message'
 import { forgotPassword, verifyEmail, resendVerification } from '../services/authService'
 
+const DEFAULT_EMAIL = 'marketing@osdemsdigital.com'
+const DEFAULT_PASSWORD = 'Osdems12345672026@@@'
+
 /**
- * Segundo login — igual que panel-promociones (video, CONFIGURA TU SUEÑO, verificación, olvidé contraseña).
- * Ruta: /acceso. Siempre se muestra esta pantalla (nunca redirigir a /campana por tener token); tras hacer login → /campana.
+ * Login con video (CONFIGURA TU SUEÑO). Ruta: /login. Tras hacer login → /panel.
  */
 export function PanelLoginPage() {
   const navigate = useNavigate()
@@ -17,8 +19,8 @@ export function PanelLoginPage() {
   const { login } = useAuth()
   const [showForgot, setShowForgot] = useState(false)
 
-  const [loginEmail, setLoginEmail] = useState('')
-  const [loginPassword, setLoginPassword] = useState('')
+  const [loginEmail, setLoginEmail] = useState(DEFAULT_EMAIL)
+  const [loginPassword, setLoginPassword] = useState(DEFAULT_PASSWORD)
   const [loginLoading, setLoginLoading] = useState(false)
   const [loginMsg, setLoginMsg] = useState({ text: '', type: 'info' })
 
@@ -42,7 +44,7 @@ export function PanelLoginPage() {
     try {
       await login(email, password)
       setLoginMsg({ text: '', type: 'info' })
-      navigate('/campana', { replace: true })
+      navigate('/panel', { replace: true })
     } catch (err) {
       const msg =
         err?.data?.message ||

@@ -48,7 +48,7 @@ export function PanelPage() {
                 </button>
               </>
             ) : (
-              <Link to="/acceso" className="home-hero-btn home-hero-btn--access" replace>
+              <Link to="/login" className="home-hero-btn home-hero-btn--access" replace>
                 {t('panel.accessPanel')}
               </Link>
             )}

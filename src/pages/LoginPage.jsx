@@ -4,16 +4,17 @@ import { login, setToken, setEmail, getToken } from '../lib/api'
 import { useLanguage } from '../context/LanguageContext'
 
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
+const DEFAULT_EMAIL = 'marketing@osdemsdigital.com'
+const DEFAULT_PASSWORD = 'Osdems12345672026@@@'
 
 /**
- * Primer login — pantalla original (card navy/gold, Iniciar sesión, Accede al panel de campañas).
- * Ruta: /login. Enlace desde la intro "Iniciar sesión". No modificar.
+ * Login con card (navy/gold). Ruta: /acceso. Tras login → /campana.
  */
 export function LoginPage() {
   const navigate = useNavigate()
   const { t } = useLanguage()
-  const [email, setEmailInput] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmailInput] = useState(DEFAULT_EMAIL)
+  const [password, setPassword] = useState(DEFAULT_PASSWORD)
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState({ text: '', type: '' })
 
@@ -21,7 +22,7 @@ export function LoginPage() {
 
   useEffect(() => {
     if (getToken()) {
-      navigate('/panel', { replace: true })
+      navigate('/campana', { replace: true })
       return
     }
   }, [navigate])
@@ -44,7 +45,7 @@ export function LoginPage() {
       setToken(token)
       setEmail(email.trim())
       showMsg('', '')
-      navigate('/panel', { replace: true })
+      navigate('/campana', { replace: true })
     } catch (err) {
       showMsg(err?.message || t('login.errorLogin'), 'err')
     } finally {

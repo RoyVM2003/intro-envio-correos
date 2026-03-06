@@ -16,8 +16,8 @@ export default function App() {
         <LanguageSelector />
         <Routes>
           <Route path="/" element={<IntroPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/acceso" element={<PanelLoginPage />} />
+          <Route path="/login" element={<PanelLoginPage />} />
+          <Route path="/acceso" element={<LoginPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/panel" element={<PanelPage />} />
           <Route path="/campana" element={<CampanaPage />} />
