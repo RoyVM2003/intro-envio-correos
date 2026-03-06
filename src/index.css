@@ -4980,7 +4980,7 @@ h4, h5, h6, button, input, select, textarea, label {
   grid-template-columns: 1fr 1fr !important;
   grid-template-rows: auto auto !important;
   column-gap: 1.5rem;
-  row-gap: 0.75rem;
+  row-gap: 0.35rem;
   align-items: stretch;
 }
 .wf-cards-grid .wf-grid-pane {

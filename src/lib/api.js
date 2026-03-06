@@ -12,19 +12,6 @@ const API_BASE_URL = import.meta.env.DEV && !import.meta.env.VITE_API_BASE
 export const TOKEN_KEY = 'osdemsventas_token'
 export const EMAIL_KEY = 'osdemsventas_email'
 
-/** Credenciales aceptadas cuando la API no responde (ej. Cannot POST). Quitar en producción si la API está activa. */
-const FALLBACK_CREDENTIALS = [
-  { email: 'vegamorales0304@gmail.com', password: 'Rodrigo0907' },
-  { email: 'marketing@osdemsdigital.com', password: 'Osdems12345672026@@@' },
-]
-
-function isFallbackMatch(email, password) {
-  const e = (email || '').trim().toLowerCase()
-  return FALLBACK_CREDENTIALS.some(
-    (c) => c.email.toLowerCase() === e && c.password === password
-  )
-}
-
 export function getToken() {
   return sessionStorage.getItem(TOKEN_KEY)
 }
@@ -44,7 +31,7 @@ export function setEmail(email) {
 }
 
 /**
- * Login: primero intenta la API; si falla (Cannot POST / no disponible), acepta credenciales por defecto.
+ * Login vía API de inicio de sesión.
  * @returns { Promise<{ token?: string, accessToken?: string, access_token?: string }> }
  */
 export async function login(email, password) {
@@ -59,24 +46,13 @@ export async function login(email, password) {
     })
     text = await res.text()
   } catch (_) {
-    if (isFallbackMatch(email, password)) {
-      return { token: `fallback-${email.trim()}`, accessToken: `fallback-${email.trim()}` }
-    }
     throw new Error('No se pudo conectar con el servidor. Comprueba tu conexión.')
-  }
-
-  const isApiError = !res.ok || (text && text.includes('Cannot POST'))
-  if (isApiError && isFallbackMatch(email, password)) {
-    return { token: `fallback-${email.trim()}`, accessToken: `fallback-${email.trim()}` }
   }
 
   let data
   try {
     data = JSON.parse(text)
   } catch {
-    if (isFallbackMatch(email, password)) {
-      return { token: `fallback-${email.trim()}`, accessToken: `fallback-${email.trim()}` }
-    }
     throw new Error(text || 'Error al iniciar sesión')
   }
   if (!res.ok) {

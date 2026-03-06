@@ -211,7 +211,7 @@ export function CampanaPage() {
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr',
                   gridTemplateRows: 'auto auto',
-                  gap: '0.75rem 1.5rem',
+                  gap: '0.35rem 1.5rem',
                   alignItems: 'stretch',
                 }}
               >
