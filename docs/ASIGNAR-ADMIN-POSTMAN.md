@@ -63,17 +63,10 @@ Sustituye `{ID_DEL_USUARIO}` por el ID que obtuviste en el paso 2 (por ejemplo: 
 - `Content-Type: application/json`
 - `Authorization: Bearer TU_TOKEN_AQUI`
 
-**Body (raw JSON)** – prueba primero con:
+**Body (raw JSON)** – la API usa `id_role` (número). `1` = administrador, `2` = cliente_empresa:
 ```json
 {
-  "role": "administrator"
-}
-```
-
-Si el backend responde con error, prueba con:
-```json
-{
-  "panel_role": "administrator"
+  "id_role": 1
 }
 ```
 
@@ -96,7 +89,7 @@ curl -s https://osdemsventas.site/api/v1/admin/users \
 curl -X PUT "https://osdemsventas.site/api/v1/admin/users/USER_ID" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TOKEN" \
-  -d '{"role":"administrator"}'
+  -d '{"id_role":1}'
 ```
 
 ---

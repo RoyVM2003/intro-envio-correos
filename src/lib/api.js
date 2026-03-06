@@ -172,7 +172,7 @@ export async function adminGetUsers() {
     data = { message: text }
   }
   if (!res.ok) throw new Error(data?.message || data?.error || 'No tienes permisos de administrador.')
-  const list = Array.isArray(data) ? data : data?.users ?? data?.data ?? data?.items ?? []
+  const list = Array.isArray(data) ? data : data?.data ?? data?.users ?? data?.items ?? []
   return Array.isArray(list) ? list : []
 }
 

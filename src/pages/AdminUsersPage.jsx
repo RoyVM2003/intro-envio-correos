@@ -49,12 +49,8 @@ export function AdminUsersPage() {
     setUpdatingId(id)
     setMessage({ text: t('admin.assigning'), type: 'info' })
     try {
-      // Probar primero role, luego panel_role (el backend puede usar uno u otro)
-      try {
-        await adminUpdateUser(id, { role: 'administrator' })
-      } catch (e1) {
-        await adminUpdateUser(id, { panel_role: 'administrator' })
-      }
+      // La API usa id_role (número). 1 = administrador, 2 = cliente_empresa
+      await adminUpdateUser(id, { id_role: 1 })
       setMessage({ text: t('admin.assignSuccess'), type: 'ok' })
       loadUsers()
     } catch (err) {
@@ -66,13 +62,13 @@ export function AdminUsersPage() {
 
   function getId(u) {
     const raw = u?.user ?? u
-    return raw?.id ?? raw?.userId ?? raw?.user_id ?? raw?._id ?? null
+    return raw?.id ?? raw?.id_users ?? raw?.userId ?? raw?.user_id ?? raw?._id ?? null
   }
 
   function isAdmin(u) {
     const raw = u?.user ?? u
     const r = (raw?.role ?? raw?.panel_role ?? raw?.panelRole ?? '').toLowerCase()
-    return r === 'administrator' || r === 'admin'
+    return r === 'administrator' || r === 'administrador' || r === 'admin'
   }
 
   const email = u => {
