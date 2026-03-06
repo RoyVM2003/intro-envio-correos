@@ -150,12 +150,16 @@ export function IntroPage() {
 
       {/* ROI */}
       <section className="intro-roi intro-scroll-section" ref={setRef(3)}>
-        <div className="intro-wrap intro-roi-inner">
+        <div className="intro-roi-inner">
           <h2 className="intro-roi-title">{t('intro.roi.title')}</h2>
           <p className="intro-roi-lead">{t('intro.roi.lead')}</p>
-          <div className="intro-roi-text">
-            <p>{t('intro.roi.p1')}</p>
-            <p>{t('intro.roi.p2')}</p>
+          <div className="intro-roi-cards">
+            <div className="intro-roi-card">
+              <p>{t('intro.roi.p1')}</p>
+            </div>
+            <div className="intro-roi-card">
+              <p>{t('intro.roi.p2')}</p>
+            </div>
           </div>
         </div>
       </section>
