@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { LANGUAGES } from '../data/translations'
 import './LanguageSelector.css'
@@ -18,7 +19,7 @@ export function LanguageSelector() {
 
   const current = LANGUAGES.find((l) => l.code === lang) || LANGUAGES[0]
 
-  return (
+  const content = (
     <div className="lang-selector" ref={ref}>
       <button
         type="button"
@@ -53,4 +54,6 @@ export function LanguageSelector() {
       )}
     </div>
   )
+
+  return createPortal(content, document.body)
 }

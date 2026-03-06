@@ -1,8 +1,7 @@
 .lang-selector {
   position: fixed;
-  top: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 4.5rem;
+  right: 1.5rem;
   z-index: 9999;
 }
 
@@ -50,8 +49,8 @@
 .lang-selector-dropdown {
   position: absolute;
   top: calc(100% + 0.35rem);
-  left: 50%;
-  transform: translateX(-50%);
+  right: 0;
+  left: auto;
   width: max-content;
   max-width: 180px;
   margin: 0;
