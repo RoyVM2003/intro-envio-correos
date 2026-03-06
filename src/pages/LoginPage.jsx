@@ -53,10 +53,15 @@ export function LoginPage() {
       showMsg(t('login.errorRequired'), 'err')
       return
     }
+    const firstName = String(name || '').trim()
+    if (firstName.length > 0 && firstName.length < 2) {
+      showMsg(t('login.registerNameLength'), 'err')
+      return
+    }
     setLoading(true)
     showMsg(t('login.registerCreating'), 'info')
     try {
-      const data = await apiRegister(email.trim(), password, name.trim())
+      const data = await apiRegister(email.trim(), password, firstName || undefined)
       const token = data.token || data.accessToken || data.access_token
       if (token) {
         setToken(token)
@@ -97,14 +102,17 @@ export function LoginPage() {
         {showRegister ? (
           <form className="login-form" onSubmit={handleRegister}>
             <div className="login-form-group">
-              <label htmlFor="register-name">Nombre (opcional)</label>
+              <label htmlFor="register-name">{t('login.registerFirstName')}</label>
               <input
                 id="register-name"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Tu nombre"
-                autoComplete="name"
+                placeholder={t('login.registerFirstNamePlaceholder')}
+                autoComplete="given-name"
+                minLength={2}
+                maxLength={50}
+                required
               />
             </div>
             <div className="login-form-group">

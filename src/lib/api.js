@@ -32,13 +32,15 @@ export function setEmail(email) {
 
 /**
  * Registro de nueva cuenta. POST /api/v1/auth/register
- * Si el backend no expone este endpoint, devolverá 404; en ese caso las cuentas se crean por otro medio (panel admin, etc.).
+ * El backend espera first_name (2-50 caracteres).
  * @returns { Promise<{ user?: object, token?: string, message?: string }> }
  */
-export async function register(email, password, name = '') {
+export async function register(email, password, firstName = '') {
   const url = `${API_BASE_URL}/api/v1/auth/register`
-  const body = { email: email.trim(), password }
-  if (name && String(name).trim()) body.name = String(name).trim()
+  const first = String(firstName || '').trim()
+  const body = { email: email.trim(), password, first_name: first || email.trim().split('@')[0] || 'Usuario' }
+  if (body.first_name.length < 2) body.first_name = body.first_name.padEnd(2, ' ') || 'Usuario'
+  if (body.first_name.length > 50) body.first_name = body.first_name.slice(0, 50)
   let res
   let text = ''
   try {
@@ -58,7 +60,11 @@ export async function register(email, password, name = '') {
     data = { message: text || 'Error en el registro' }
   }
   if (!res.ok) {
-    const msg = data?.message || data?.error || (typeof data === 'object' ? JSON.stringify(data) : text)
+    let msg = data?.message || data?.error || (typeof data === 'object' ? JSON.stringify(data) : text)
+    if (Array.isArray(data?.errors) && data.errors.length > 0) {
+      const details = data.errors.map((e) => e.msg || e.message).filter(Boolean).join('. ')
+      if (details) msg = `${msg}: ${details}`
+    }
     throw new Error(msg)
   }
   return data
