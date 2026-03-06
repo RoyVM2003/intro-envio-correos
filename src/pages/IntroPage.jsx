@@ -102,7 +102,10 @@ export function IntroPage() {
       <section className="intro-hero">
         <div className="intro-hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
         <div className="intro-hero-overlay" />
-        <Link to="/login" className="intro-hero-login">{t('common.login')}</Link>
+        <div className="intro-hero-top-links">
+          <a href="https://osdemsdigital.com" target="_blank" rel="noopener noreferrer" className="intro-hero-digital">{t('common.digitalLink')}</a>
+          <Link to="/login" className="intro-hero-login">{t('common.login')}</Link>
+        </div>
         <div className="intro-hero-content">
           <div className="intro-hero-eyebrow">{t('intro.hero.eyebrow')}</div>
           <h1 className="intro-hero-title">
@@ -307,12 +310,9 @@ export function IntroPage() {
         </div>
       </section>
 
-      {/* Enlace OSDEMS Digital + Formulario Diagnóstico Estratégico */}
+      {/* Formulario Diagnóstico Estratégico — diseño original */}
       <section className="intro-diagnosis intro-scroll-section">
         <div className="intro-wrap intro-diagnosis-inner">
-          <p className="intro-diagnosis-digital-link">
-            <a href="https://osdemsdigital.com" target="_blank" rel="noopener noreferrer">{t('common.digitalLink')}</a>
-          </p>
           <div className="intro-diagnosis-card">
             <h3 className="intro-diagnosis-title">{t('intro.diagnosis.title')}</h3>
             <h4 className="intro-diagnosis-subtitle">{t('intro.diagnosis.subtitle')}</h4>
