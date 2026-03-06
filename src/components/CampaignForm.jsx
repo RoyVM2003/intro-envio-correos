@@ -112,7 +112,7 @@ export function CampaignForm({
           <option value="">{tFn('campana.createNew')}</option>
           {list.map((c) => {
             const cid = c.id ?? c.campaign_id
-            const name = ((c.name ?? c.subject) || 'Campaña').slice(0, 60) || 'Campaña #' + cid
+            const name = ((c.name ?? c.subject) || tFn('panel.campaign')).slice(0, 60) || tFn('panel.campaign') + ' #' + cid
             return <option key={cid} value={cid}>{name}</option>
           })}
         </select>

@@ -31,6 +31,40 @@ export function setEmail(email) {
 }
 
 /**
+ * Registro de nueva cuenta. POST /api/v1/auth/register
+ * Si el backend no expone este endpoint, devolverá 404; en ese caso las cuentas se crean por otro medio (panel admin, etc.).
+ * @returns { Promise<{ user?: object, token?: string, message?: string }> }
+ */
+export async function register(email, password, name = '') {
+  const url = `${API_BASE_URL}/api/v1/auth/register`
+  const body = { email: email.trim(), password }
+  if (name && String(name).trim()) body.name = String(name).trim()
+  let res
+  let text = ''
+  try {
+    res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+    text = await res.text()
+  } catch (_) {
+    throw new Error('No se pudo conectar con el servidor. Comprueba tu conexión.')
+  }
+  let data
+  try {
+    data = JSON.parse(text)
+  } catch {
+    data = { message: text || 'Error en el registro' }
+  }
+  if (!res.ok) {
+    const msg = data?.message || data?.error || (typeof data === 'object' ? JSON.stringify(data) : text)
+    throw new Error(msg)
+  }
+  return data
+}
+
+/**
  * Login vía API de inicio de sesión.
  * @returns { Promise<{ token?: string, accessToken?: string, access_token?: string }> }
  */

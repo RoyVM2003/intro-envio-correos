@@ -33,6 +33,7 @@ Con eso el front ya apunta al mismo backend que el anterior.
 
 - **Base:** `VITE_API_BASE` (ej. `https://osdemsventas.site`).
 - **Endpoints:**
+  - `POST /api/v1/auth/register` — registro (body: `{ email, password [, name] }`). Para crear una cuenta desde cero: `node scripts/register-user.js tu@email.com TuPassword`.
   - `POST /api/v1/auth/login` — login (token + email en `sessionStorage`).
   - `POST /api/v1/auth/forgot-password` — olvidé contraseña.
   - `POST /api/v1/auth/verify` — verificar correo con código.

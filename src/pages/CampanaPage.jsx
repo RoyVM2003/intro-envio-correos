@@ -122,7 +122,7 @@ export function CampanaPage() {
           .map((c) => {
             const id = c.id ?? c.campaign_id ?? c.id_campaign ?? c._id
             if (!id || deletedIds.has(String(id))) return null
-            return { id, name: c.name ?? c.subject ?? c.nombre ?? c.compania ?? 'Campaña', subject: c.subject ?? c.name ?? c.nombre ?? '', body: c.body ?? c.message ?? '' }
+            return { id, name: c.name ?? c.subject ?? c.nombre ?? c.compania ?? t('panel.campaign'), subject: c.subject ?? c.name ?? c.nombre ?? '', body: c.body ?? c.message ?? '' }
           })
           .filter(Boolean)
         if (mapped.length) setCampaigns((prev) => {
