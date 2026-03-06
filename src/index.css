@@ -61,6 +61,18 @@ body {
   min-height: 100vh;
 }
 
+/* Barra superior intro: SIEMPRE fija, nunca hace scroll */
+#intro-top-bar-fixed.intro-top-bar {
+  position: fixed !important;
+  top: 1.25rem !important;
+  right: 1.5rem !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 2147483647 !important;
+  transform: none !important;
+  contain: none !important;
+}
+
 /* Selector de idioma (globo) — visible en todas las pestañas */
 .lang-selector {
   position: fixed;
