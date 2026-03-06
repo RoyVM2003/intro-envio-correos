@@ -46,7 +46,7 @@ const es = {
       card3Desc: 'Conectando la demanda del cliente con tu cadena de suministro y comunicación.',
     },
     info: {
-      box1Title: 'Business Consulting',
+      box1Title: 'Business Consulting B2B',
       box1Text: 'Para que la transformación digital de tu negocio sea un éxito, hace falta un enfoque de consultoría holístico y pragmático que abarque personas, procesos y tecnología con resultados tangibles. Tanto si buscas apoyo en el éxito estratégico como en el operativo, nuestro enfoque orientado al ROI impulsa la calidad, las mejores prácticas y la innovación constante.',
       box2Title: 'Consultoría B2B (Technological Trailblazers)',
       box2Text: 'En consultoría B2B (Business to Business), la innovación está en el ADN de OSDEMS: llevamos a nuestros clientes las innovaciones del mañana hoy. Lo hacemos con nuestro centro de I+D interno que desarrolla soluciones específicas por sector y rol, y con un ecosistema de plataformas punteras que están cambiando el mercado. Este enfoque híbrido en consultoría B2B garantiza la mejor solución disponible para tu negocio.',
@@ -183,7 +183,7 @@ const en = {
       card3Desc: 'Connecting customer demand with your supply chain and communication.',
     },
     info: {
-      box1Title: 'Business Consulting',
+      box1Title: 'Business Consulting B2B',
       box1Text: 'For your business digital transformation to succeed, a holistic and pragmatic consulting approach is needed, covering people, processes and technology with tangible results. Whether you need strategic or operational support, our ROI-oriented approach drives quality, best practices and constant innovation.',
       box2Title: 'B2B Consulting (Technological Trailblazers)',
       box2Text: 'In B2B (Business to Business) consulting, innovation is in OSDEMS\' DNA: we bring our clients tomorrow\'s innovations today. We do this with our internal R&D centre developing sector and role-specific solutions, and an ecosystem of leading platforms that are changing the market. This hybrid approach to B2B consulting guarantees the best solution for your business.',

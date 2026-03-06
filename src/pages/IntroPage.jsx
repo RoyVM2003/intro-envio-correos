@@ -5,8 +5,11 @@ import { useLanguage } from '../context/LanguageContext'
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80'
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'
-const TIER_BG_IMAGE = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=60'
-const ROI_BG_IMAGE = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=60'
+const TIER_CARD_IMAGES = [
+  'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&q=80',
+  'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80',
+  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&q=80',
+]
 
 const VALUE_CARDS = [
   {
@@ -38,7 +41,7 @@ const TIER_LEVELS = [
 const KEY_FIGURES = [
   { value: '24/7', label: 'Servicio internacional' },
   { value: 'Tier 1-3', label: 'Niveles de soporte' },
-  { value: '+15.000', label: 'Clientes' },
+  { value: '+1.500', label: 'Clientes' },
   { value: '13+', label: 'Países' },
 ]
 
@@ -209,10 +212,8 @@ export function IntroPage() {
         </div>
       </section>
 
-      {/* Apartado ROI — para directivos y dueños */}
+      {/* Apartado ROI — para directivos y dueños (sin imagen de fondo) */}
       <section className="intro-roi intro-scroll-section" ref={setRef(3)}>
-        <div className="intro-roi-bg" style={{ backgroundImage: `url(${ROI_BG_IMAGE})` }} aria-hidden />
-        <div className="intro-roi-overlay" aria-hidden />
         <div className="intro-wrap intro-roi-inner">
           <h2 className="intro-roi-title">{t('intro.roi.title')}</h2>
           <p className="intro-roi-lead">
@@ -248,10 +249,8 @@ export function IntroPage() {
         </div>
       </section>
 
-      {/* Niveles Tier 1, 2, 3 (detalle) — imagen de fondo ligera */}
-      <section className="intro-tier intro-scroll-section" ref={setRef(5)} style={{ '--tier-bg-image': `url(${TIER_BG_IMAGE})` }}>
-        <div className="intro-tier-bg" style={{ backgroundImage: `url(${TIER_BG_IMAGE})` }} aria-hidden />
-        <div className="intro-tier-overlay" aria-hidden />
+      {/* Niveles Tier 1, 2, 3 (detalle) — imagen de referencia en cada cuadro */}
+      <section className="intro-tier intro-scroll-section" ref={setRef(5)}>
         <div className="intro-wrap intro-tier-content">
           <h2 className="intro-tier-main-title">{t('intro.tier.title')}</h2>
           <p className="intro-tier-roi-callout">
@@ -265,16 +264,25 @@ export function IntroPage() {
           </p>
           <div className="intro-tier-grid">
             <div className="intro-tier-card">
+              <div className="intro-tier-card-image-wrap">
+                <img src={TIER_CARD_IMAGES[0]} alt="" className="intro-tier-card-image" />
+              </div>
               <span className="intro-tier-badge">{t('intro.tier.tier1')}</span>
               <h3 className="intro-tier-title">{t('intro.tier.tier1Title')}</h3>
               <p className="intro-tier-desc">{t('intro.tier.tier1Desc')}</p>
             </div>
             <div className="intro-tier-card">
+              <div className="intro-tier-card-image-wrap">
+                <img src={TIER_CARD_IMAGES[1]} alt="" className="intro-tier-card-image" />
+              </div>
               <span className="intro-tier-badge">{t('intro.tier.tier2')}</span>
               <h3 className="intro-tier-title">{t('intro.tier.tier2Title')}</h3>
               <p className="intro-tier-desc">{t('intro.tier.tier2Desc')}</p>
             </div>
             <div className="intro-tier-card">
+              <div className="intro-tier-card-image-wrap">
+                <img src={TIER_CARD_IMAGES[2]} alt="" className="intro-tier-card-image" />
+              </div>
               <span className="intro-tier-badge">{t('intro.tier.tier3')}</span>
               <h3 className="intro-tier-title">{t('intro.tier.tier3Title')}</h3>
               <p className="intro-tier-desc">{t('intro.tier.tier3Desc')}</p>
