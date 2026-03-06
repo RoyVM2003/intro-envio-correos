@@ -41,7 +41,7 @@ export function AdminUsersPage() {
   }
 
   async function assignAdmin(user) {
-    const id = user?.id ?? user?.userId ?? user?.user_id ?? user?._id
+    const id = getId(user)
     if (!id) {
       setMessage({ text: t('admin.errorNoId'), type: 'err' })
       return
@@ -64,13 +64,25 @@ export function AdminUsersPage() {
     }
   }
 
+  function getId(u) {
+    const raw = u?.user ?? u
+    return raw?.id ?? raw?.userId ?? raw?.user_id ?? raw?._id ?? null
+  }
+
   function isAdmin(u) {
-    const r = (u?.role ?? u?.panel_role ?? u?.panelRole ?? '').toLowerCase()
+    const raw = u?.user ?? u
+    const r = (raw?.role ?? raw?.panel_role ?? raw?.panelRole ?? '').toLowerCase()
     return r === 'administrator' || r === 'admin'
   }
 
-  const email = u => u?.email ?? u?.correo ?? '-'
-  const name = u => u?.first_name ?? u?.firstName ?? u?.name ?? email(u).split('@')[0]
+  const email = u => {
+    const raw = u?.user ?? u
+    return raw?.email ?? raw?.correo ?? '-'
+  }
+  const name = u => {
+    const raw = u?.user ?? u
+    return raw?.first_name ?? raw?.firstName ?? raw?.name ?? email(u).split('@')[0]
+  }
 
   return (
     <div className="app-dark-page admin-page">
@@ -107,7 +119,7 @@ export function AdminUsersPage() {
                 </thead>
                 <tbody>
                   {users.map((u, idx) => {
-                    const id = u?.id ?? u?.userId ?? u?.user_id ?? u?._id
+                    const id = getId(u)
                     const admin = isAdmin(u)
                     return (
                       <tr key={id ?? `user-${idx}`}>
