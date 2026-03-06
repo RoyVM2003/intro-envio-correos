@@ -213,9 +213,12 @@ export function CampanaPage() {
             </div>
           </div>
 
-          <div className={`wf-cards wf-cards--single${hasSentCampaign ? ' wf-cards--faded' : ''}`}>
+          <div className={`wf-cards wf-cards--single${hasSentCampaign ? ' wf-cards--faded' : ''}`} data-view="grid-3-pasos">
             <div className="wrap">
               <Message text={globalMsg.text} type={globalMsg.type} />
+              <p className="wf-cards-grid-label" style={{ margin: '0 0 0.75rem', fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)' }}>
+                Vista en grid: Paso 1 y 2 arriba · Paso 3 abajo
+              </p>
               <div
                 className="wf-cards-grid"
                 style={{
