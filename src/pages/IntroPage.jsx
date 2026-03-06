@@ -6,27 +6,27 @@ const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80'
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'
 const TIER_CARD_IMAGES = [
-  'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&q=80',
-  'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80',
-  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&q=80',
+  'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=338&fit=crop&q=85',
+  'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=338&fit=crop&q=85',
+  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=338&fit=crop&q=85',
 ]
 
 const VALUE_CARDS = [
   {
     icon: 'fa-handshake',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=360&fit=crop&q=85',
     title: 'Fidelización a tu marca',
     desc: 'Generando relaciones sólidas y duraderas más allá de la venta.',
   },
   {
     icon: 'fa-users',
-    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=360&fit=crop&q=85',
     title: 'Empodera a tu equipo',
     desc: 'Con más movilidad, eficiencia operativa y herramientas listas para el futuro.',
   },
   {
     icon: 'fa-globe',
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=360&fit=crop&q=85',
     title: 'Optimiza operaciones',
     desc: 'Conectando la demanda del cliente con tu cadena de suministro y comunicación.',
   },
@@ -201,14 +201,16 @@ export function IntroPage() {
         </div>
       </section>
 
-      {/* Cuadros de información — Business Consulting + Consultoría B2B */}
+      {/* Cuadros de información — B2B + Consultoría (contraste, vida) */}
       <section className="intro-info-boxes intro-scroll-section" ref={setRef(2)}>
         <div className="intro-info-boxes-inner">
-          <article className="intro-info-box">
+          <article className="intro-info-box intro-info-box--dark">
+            <div className="intro-info-box-icon"><i className="fas fa-rocket" aria-hidden /></div>
             <h2 className="intro-info-box-title">{t('intro.info.box1Title')}</h2>
             <p className="intro-info-box-text">{t('intro.info.box1Text')}</p>
           </article>
-          <article className="intro-info-box">
+          <article className="intro-info-box intro-info-box--accent">
+            <div className="intro-info-box-icon"><i className="fas fa-lightbulb" aria-hidden /></div>
             <h2 className="intro-info-box-title">{t('intro.info.box2Title')}</h2>
             <p className="intro-info-box-text">{t('intro.info.box2Text')}</p>
           </article>
@@ -315,7 +317,6 @@ export function IntroPage() {
         <div className="intro-wrap intro-diagnosis-inner">
           <div className="intro-diagnosis-card">
             <h3 className="intro-diagnosis-title">{t('intro.diagnosis.title')}</h3>
-            <h4 className="intro-diagnosis-subtitle">{t('intro.diagnosis.subtitle')}</h4>
             <form className="intro-diagnosis-form" onSubmit={(e) => e.preventDefault()}>
               <div className="intro-diagnosis-group">
                 <input type="text" id="diagnosis-nombre" name="nombre" placeholder={t('intro.diagnosis.placeholderName')} required />
