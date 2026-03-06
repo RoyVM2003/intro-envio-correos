@@ -164,6 +164,11 @@ export function LoginPage() {
             <button type="submit" className="login-btn" disabled={loading}>
               {loading ? t('login.entering') : t('login.submit')}
             </button>
+            <p className="login-page-create">
+              <button type="button" className="login-page-link login-page-link--create" onClick={() => { setShowRegister(true); showMsg('', '') }}>
+                {t('login.createAccount')}
+              </button>
+            </p>
           </form>
         )}
 
@@ -173,13 +178,7 @@ export function LoginPage() {
               {t('login.alreadyHaveAccount')}
             </button>
           ) : (
-            <>
-              <button type="button" className="login-page-link" onClick={() => { setShowRegister(true); showMsg('', '') }}>
-                {t('login.createAccount')}
-              </button>
-              {' · '}
-              <Link to="/">{t('login.back')}</Link>
-            </>
+            <Link to="/">{t('login.back')}</Link>
           )}
         </p>
       </div>
