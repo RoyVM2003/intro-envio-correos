@@ -6033,9 +6033,9 @@ h4, h5, h6, button, input, select, textarea, label {
   pointer-events: none;
 }
 .intro-info-boxes-inner {
-  max-width: 1040px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -6046,7 +6046,7 @@ h4, h5, h6, button, input, select, textarea, label {
   background: #fff;
   border: none;
   border-radius: 16px;
-  padding: 2rem 2.25rem;
+  padding: 1.5rem 2rem;
   transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 .intro-info-box--dark {
@@ -6072,8 +6072,8 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-info-box--dark:hover { box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35); }
 .intro-info-box--accent:hover { box-shadow: 0 12px 36px rgba(201, 162, 39, 0.2); }
 .intro-info-box-icon {
-  width: 52px; height: 52px;
-  margin-bottom: 1.25rem;
+  width: 48px; height: 48px;
+  margin-bottom: 0.75rem;
   display: flex; align-items: center; justify-content: center;
   font-size: 1.4rem;
   background: rgba(201, 162, 39, 0.15);
@@ -6083,15 +6083,15 @@ h4, h5, h6, button, input, select, textarea, label {
 }
 .intro-info-box-title {
   font-family: var(--font-ui);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
   letter-spacing: 0.06em;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 .intro-info-box-text {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.6;
   margin: 0;
   text-align: justify;
   letter-spacing: 0.02em;
@@ -6099,7 +6099,7 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-info-box--dark .intro-info-box-text { opacity: 0.95; }
 .intro-info-box--accent .intro-info-box-text { color: #334155; }
 @media (min-width: 769px) {
-  .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: stretch; }
+  .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: stretch; }
 }
 
 /* Apartado ROI — directivos, con más vida y creatividad */
