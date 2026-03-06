@@ -307,7 +307,38 @@ export function IntroPage() {
         </div>
       </section>
 
-      {/* Cierre de contenido — sin botón Iniciar ni footer (siempre visible) */}
+      {/* Enlace OSDEMS Digital + Formulario Diagnóstico Estratégico */}
+      <section className="intro-diagnosis intro-scroll-section">
+        <div className="intro-wrap intro-diagnosis-inner">
+          <p className="intro-diagnosis-digital-link">
+            <a href="https://osdemsdigital.com" target="_blank" rel="noopener noreferrer">{t('common.digitalLink')}</a>
+          </p>
+          <div className="intro-diagnosis-card">
+            <h3 className="intro-diagnosis-title">{t('intro.diagnosis.title')}</h3>
+            <h4 className="intro-diagnosis-subtitle">{t('intro.diagnosis.subtitle')}</h4>
+            <form className="intro-diagnosis-form" onSubmit={(e) => e.preventDefault()}>
+              <div className="intro-diagnosis-group">
+                <input type="text" id="diagnosis-nombre" name="nombre" placeholder={t('intro.diagnosis.placeholderName')} required />
+              </div>
+              <div className="intro-diagnosis-group">
+                <input type="email" id="diagnosis-email" name="email" placeholder={t('intro.diagnosis.placeholderEmail')} required />
+              </div>
+              <div className="intro-diagnosis-group">
+                <input type="tel" id="diagnosis-telefono" name="telefono" placeholder={t('intro.diagnosis.placeholderPhone')} />
+              </div>
+              <div className="intro-diagnosis-group">
+                <input type="text" id="diagnosis-empresa" name="empresa" placeholder={t('intro.diagnosis.placeholderCompany')} />
+              </div>
+              <button type="submit" className="intro-diagnosis-btn">{t('intro.diagnosis.button')}</button>
+            </form>
+            <p className="intro-diagnosis-footer">
+              📌 {t('intro.diagnosis.footer')} <a href="#">{t('intro.diagnosis.privacy')}</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Cierre de contenido — CTA */}
       <section className="intro-cta intro-cta--compact">
         <div className="intro-wrap intro-cta-inner">
           <p className="intro-cta-heading">{t('intro.cta.heading')}</p>

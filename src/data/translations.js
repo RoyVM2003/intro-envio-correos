@@ -14,6 +14,7 @@ const es = {
     login: 'Iniciar sesión',
     backToIntro: '← Volver a la introducción',
     selectLanguage: 'Seleccionar idioma',
+    digitalLink: '← OSDEMS Digital',
   },
   intro: {
     hero: {
@@ -93,6 +94,17 @@ const es = {
       heading: 'Tu siguiente paso',
       text: 'Accede al panel, lanza tus campañas y mide el ROI en tiempo real. Todo lo que necesitas, en un solo lugar.',
     },
+    diagnosis: {
+      title: 'Solicita tu Diagnóstico Estratégico',
+      subtitle: 'Valorado en $2,500 — Por tiempo limitado',
+      placeholderName: 'Nombre completo',
+      placeholderEmail: 'Email corporativo',
+      placeholderPhone: 'Teléfono',
+      placeholderCompany: 'Empresa y cargo',
+      button: 'Obtener mi diagnóstico',
+      footer: 'Un experto analizará tus campañas y te contactará en 24h.',
+      privacy: 'Política de privacidad',
+    },
   },
   login: {
     title: 'Iniciar sesión',
@@ -151,6 +163,7 @@ const en = {
     login: 'Log in',
     backToIntro: '← Back to introduction',
     selectLanguage: 'Select language',
+    digitalLink: '← OSDEMS Digital',
   },
   intro: {
     hero: {
@@ -230,6 +243,17 @@ const en = {
       heading: 'Your next step',
       text: 'Access the panel, launch your campaigns and measure ROI in real time. Everything you need, in one place.',
     },
+    diagnosis: {
+      title: 'Request your Strategic Diagnosis',
+      subtitle: 'Valued at $2,500 — Limited time',
+      placeholderName: 'Full name',
+      placeholderEmail: 'Work email',
+      placeholderPhone: 'Phone',
+      placeholderCompany: 'Company & title',
+      button: 'Get my diagnosis',
+      footer: 'An expert will analyze your campaigns and contact you within 24h.',
+      privacy: 'Privacy policy',
+    },
   },
   login: {
     title: 'Log in',
@@ -291,6 +315,7 @@ const it = {
     hero: { ...en.intro.hero, eyebrow: 'IL TUO PARTNER NELLA TRASFORMAZIONE', title1: 'Innovazione che parla', title2: 'la lingua della crescita', tagline: 'Meno tempo perso. Più risultati. ROI visibile dal primo giorno. Scala con ciò che vende.' },
     roi: { ...en.intro.roi, title: 'ROI: ciò che i dirigenti devono vedere' },
     cta: { ...en.intro.cta, heading: 'Il tuo prossimo passo', text: 'Accedi al pannello, lancia le campagne e misura il ROI in tempo reale. Tutto in un unico posto.' },
+    diagnosis: { ...en.intro.diagnosis, title: 'Richiedi la tua Diagnosi Strategica', subtitle: 'Valore $2,500 — Offerta a tempo limitato', placeholderName: 'Nome completo', placeholderEmail: 'Email aziendale', placeholderPhone: 'Telefono', placeholderCompany: 'Azienda e ruolo', button: 'Ottieni la mia diagnosi', footer: 'Un esperto analizzerà le tue campagne e ti contatterà entro 24h.', privacy: 'Informativa sulla privacy' },
   },
   login: { ...en.login, title: 'Accedi', subtitle: 'Accedi al pannello campagne con il tuo account.', email: 'Email', password: 'Password', submit: 'Entra', entering: 'Accesso in corso…', back: '← Torna all\'introduzione', connecting: 'Connessione...', errorRequired: 'Inserisci email e password.', errorLogin: 'Accesso fallito.', errorApi: 'L\'API non ha restituito un token.' },
   panelLogin: { title: 'Accesso al pannello', back: '← Torna all\'introduzione' },
@@ -306,6 +331,7 @@ const nl = {
     hero: { ...en.intro.hero, eyebrow: 'UW PARTNER IN TRANSFORMATIE', title1: 'Innovatie die spreekt', title2: 'de taal van groei', tagline: 'Minder tijd verspild. Meer resultaat. ROI zichtbaar vanaf dag één. Schaal met wat verkoopt.' },
     roi: { ...en.intro.roi, title: 'ROI: wat directeuren moeten zien' },
     cta: { ...en.intro.cta, heading: 'Uw volgende stap', text: 'Ga naar het panel, start campagnes en meet ROI in realtime. Alles op één plek.' },
+    diagnosis: { ...en.intro.diagnosis, title: 'Vraag uw Strategische Diagnose aan', subtitle: 'Gewaardeerd op $2,500 — Beperkte tijd', placeholderName: 'Volledige naam', placeholderEmail: 'Werk-e-mail', placeholderPhone: 'Telefoon', placeholderCompany: 'Bedrijf en functie', button: 'Ontvang mijn diagnose', footer: 'Een expert analyseert uw campagnes en neemt binnen 24 uur contact op.', privacy: 'Privacybeleid' },
   },
   login: { ...en.login, title: 'Inloggen', subtitle: 'Toegang tot het campagnepanel met uw account.', email: 'E-mail', password: 'Wachtwoord', submit: 'Inloggen', entering: 'Bezig met inloggen…', back: '← Terug naar introductie', connecting: 'Verbinden...', errorRequired: 'Vul e-mail en wachtwoord in.', errorLogin: 'Inloggen mislukt.', errorApi: 'De API gaf geen token terug.' },
   panelLogin: { title: 'Paneltoegang', back: '← Terug naar introductie' },
@@ -321,6 +347,7 @@ const fr = {
     hero: { ...en.intro.hero, eyebrow: 'VOTRE PARTENAIRE DE TRANSFORMATION', title1: 'L\'innovation qui parle', title2: 'la langue de la croissance', tagline: 'Moins de temps perdu. Plus de résultats. ROI visible dès le premier jour. Scalez avec ce qui vend.' },
     roi: { ...en.intro.roi, title: 'ROI : ce que les dirigeants doivent voir' },
     cta: { ...en.intro.cta, heading: 'Votre prochaine étape', text: 'Accédez au panel, lancez vos campagnes et mesurez le ROI en temps réel. Tout en un seul endroit.' },
+    diagnosis: { ...en.intro.diagnosis, title: 'Demandez votre Diagnostic Stratégique', subtitle: 'Évalué à 2 500 $ — Durée limitée', placeholderName: 'Nom complet', placeholderEmail: 'E-mail professionnel', placeholderPhone: 'Téléphone', placeholderCompany: 'Entreprise et poste', button: 'Obtenir mon diagnostic', footer: 'Un expert analysera vos campagnes et vous contactera sous 24h.', privacy: 'Politique de confidentialité' },
   },
   login: { ...en.login, title: 'Connexion', subtitle: 'Accédez au panel des campagnes avec votre compte.', email: 'E-mail', password: 'Mot de passe', submit: 'Connexion', entering: 'Connexion…', back: '← Retour à l\'introduction', connecting: 'Connexion...', errorRequired: 'Saisissez l\'e-mail et le mot de passe.', errorLogin: 'Échec de la connexion.', errorApi: 'L\'API n\'a pas renvoyé de token.' },
   panelLogin: { title: 'Accès au panel', back: '← Retour à l\'introduction' },
@@ -336,6 +363,7 @@ const de = {
     hero: { ...en.intro.hero, eyebrow: 'IHR TRANSFORMATIONSPARTNER', title1: 'Innovation, die spricht', title2: 'die Sprache des Wachstums', tagline: 'Weniger Zeit verschwendet. Mehr Ergebnisse. ROI vom ersten Tag sichtbar. Skalieren Sie mit dem, was verkauft.' },
     roi: { ...en.intro.roi, title: 'ROI: Was Führungskräfte sehen müssen' },
     cta: { ...en.intro.cta, heading: 'Ihr nächster Schritt', text: 'Zugang zum Panel, Kampagnen starten und ROI in Echtzeit messen. Alles an einem Ort.' },
+    diagnosis: { ...en.intro.diagnosis, title: 'Fordern Sie Ihre Strategische Diagnose an', subtitle: 'Im Wert von $2,500 — Nur für kurze Zeit', placeholderName: 'Vollständiger Name', placeholderEmail: 'Geschäftliche E-Mail', placeholderPhone: 'Telefon', placeholderCompany: 'Unternehmen und Position', button: 'Meine Diagnose erhalten', footer: 'Ein Experte analysiert Ihre Kampagnen und kontaktiert Sie innerhalb von 24 Stunden.', privacy: 'Datenschutzerklärung' },
   },
   login: { ...en.login, title: 'Anmelden', subtitle: 'Zugang zum Kampagnen-Panel mit Ihrem Konto.', email: 'E-Mail', password: 'Passwort', submit: 'Anmelden', entering: 'Anmeldung…', back: '← Zur Einführung', connecting: 'Verbinden...', errorRequired: 'E-Mail und Passwort eingeben.', errorLogin: 'Anmeldung fehlgeschlagen.', errorApi: 'Die API hat kein Token zurückgegeben.' },
   panelLogin: { title: 'Panel-Zugang', back: '← Zur Einführung' },
