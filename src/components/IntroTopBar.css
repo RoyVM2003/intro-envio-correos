@@ -1,13 +1,16 @@
+/* Barra fija: se queda arriba a la derecha al hacer scroll */
 .intro-top-bar {
   position: fixed !important;
   top: 1.25rem !important;
   right: 1.5rem !important;
   left: auto !important;
+  bottom: auto !important;
   z-index: 9999;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
+  pointer-events: auto;
 }
 
 .intro-top-bar-link {
