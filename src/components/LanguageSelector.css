@@ -1,8 +1,9 @@
 .lang-selector {
-  position: fixed;
-  bottom: 2rem;
-  right: 1.5rem;
-  top: auto;
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 1.5rem !important;
+  top: auto !important;
+  left: auto !important;
   z-index: 9999;
 }
 
