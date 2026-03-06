@@ -9,8 +9,8 @@ const VALUE_CARDS = [
   {
     icon: 'fa-handshake',
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80',
-    title: 'Generando relaciones sólidas y duraderas',
-    desc: 'Más allá de la venta. Consultoría B2B (Business to Business) que impulsa tu negocio con experiencias personalizadas y campañas que conectan.',
+    title: 'Fidelización a tu marca',
+    desc: 'Generando relaciones sólidas y duraderas más allá de la venta.',
   },
   {
     icon: 'fa-users',

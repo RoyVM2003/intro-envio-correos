@@ -6018,12 +6018,12 @@ h4, h5, h6, button, input, select, textarea, label {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.45;
+  opacity: 0.6;
 }
 .intro-tier-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(241, 245, 249, 0.92) 0%, rgba(248, 250, 252, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 250, 252, 0.88) 100%);
 }
 .intro-tier-content {
   position: relative;
