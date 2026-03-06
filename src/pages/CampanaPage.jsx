@@ -216,8 +216,17 @@ export function CampanaPage() {
           <div className={`wf-cards wf-cards--single${hasSentCampaign ? ' wf-cards--faded' : ''}`}>
             <div className="wrap">
               <Message text={globalMsg.text} type={globalMsg.type} />
-              <div className="wf-cards-grid">
-                <section id="step-1" className="wf-grid-pane">
+              <div
+                className="wf-cards-grid"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gridTemplateRows: 'auto auto',
+                  gap: '0.75rem 1.5rem',
+                  alignItems: 'stretch',
+                }}
+              >
+                <section id="step-1" className="wf-grid-pane" style={{ minWidth: 0 }}>
                   <ExcelImport onImportSuccess={() => setHasImportedExcel(true)} />
                 </section>
                 <section id="step-2" className="wf-grid-pane">
@@ -238,7 +247,7 @@ export function CampanaPage() {
                     </div>
                   </div>
                 </section>
-                <section id="step-3" className="wf-grid-pane wf-grid-pane--full">
+                <section id="step-3" className="wf-grid-pane wf-grid-pane--full" style={{ gridColumn: '1 / -1' }}>
                   <SendCampaign subject={subject} message={body} hasImportedExcel={hasImportedExcel} onSendSuccess={() => { setHasSentCampaign(true); setShowSentOverlay(true) }} />
                 </section>
               </div>

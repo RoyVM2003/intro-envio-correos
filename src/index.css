@@ -4969,14 +4969,16 @@ h4, h5, h6, button, input, select, textarea, label {
   padding-bottom: 3rem;
 }
 
-/* Una sola pantalla: paso 1 y 2 lado a lado, paso 3 abajo; sin wizard ni botones Anterior/Siguiente */
-.wf-cards--single {
+/* Grid de 3 pasos: 1 y 2 arriba lado a lado, 3 abajo (para probar APIs) — prioridad en build */
+.wf-cards.wf-cards--single {
   padding-top: 0.75rem;
   padding-bottom: 3rem;
 }
+.wf-cards.wf-cards--single .wf-cards-grid,
 .wf-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: auto auto !important;
   column-gap: 1.5rem;
   row-gap: 0.75rem;
   align-items: stretch;
@@ -4999,17 +5001,18 @@ h4, h5, h6, button, input, select, textarea, label {
   flex: 1;
 }
 .wf-cards-grid .wf-grid-pane--full {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1 !important;
 }
 .wf-cards-grid .wf-grid-pane--full > * {
   flex: none;
 }
 @media (max-width: 900px) {
+  .wf-cards.wf-cards--single .wf-cards-grid,
   .wf-cards-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .wf-cards-grid .wf-grid-pane--full {
-    grid-column: 1;
+    grid-column: 1 !important;
   }
 }
 
