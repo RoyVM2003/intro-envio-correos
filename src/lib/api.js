@@ -4,6 +4,8 @@
  * En desarrollo sin .env: peticiones a mismo origen y Vite proxy reenvía a la API.
  */
 const DEFAULT_API_BASE = 'https://osdemsventas.site'
+/** URL del formulario de contacto (IA Native). Por defecto osdemsventas.com */
+const DEFAULT_CONTACT_API = 'https://osdemsventas.com'
 const API_BASE = (import.meta.env.VITE_API_BASE && String(import.meta.env.VITE_API_BASE).trim()) || DEFAULT_API_BASE
 const API_BASE_URL = import.meta.env.DEV && !import.meta.env.VITE_API_BASE
   ? '' // en dev, /api → proxy en vite.config.js
@@ -203,19 +205,37 @@ export async function adminUpdateUser(userId, payload) {
 }
 
 /**
- * Formulario de contacto/diagnóstico. POST /api/v1/contact
- * Los datos llegan al backend; debe estar configurado para reenviar al correo de osdemsdigital.com
- * @param {{ name: string, email: string, phone?: string, message?: string }} data
+ * Formulario de contacto. POST /api/v1/contact
+ * Formato IA Native: full_name, email, phone, company, participant_count, preferred_date, comments
+ * URL por defecto: VITE_CONTACT_API_URL o API_BASE + /api/v1/contact
+ * @param {{ name: string, email: string, phone?: string, company?: string, pax?: string, date?: string, comments?: string }} data
  */
+function paxToParticipantCount(pax) {
+  if (pax === '1-5') return 5
+  if (pax === '6-10') return 10
+  if (pax === '11-15' || pax === '15+') return 15
+  return null
+}
+
 export async function contact(data) {
-  const url = `${API_BASE_URL}/api/v1/contact`
+  const contactBase = (import.meta.env.VITE_CONTACT_API_URL && String(import.meta.env.VITE_CONTACT_API_URL).trim()) || DEFAULT_CONTACT_API
+  const base = contactBase.startsWith('http') ? contactBase : `https://${contactBase}`
+  const url = `${base}/api/v1/contact`
+
+  const name = String(data?.name || '').trim()
+  const email = String(data?.email || '').trim()
+  if (!email) throw new Error('El correo es obligatorio.')
+
   const body = {
-    name: String(data?.name || '').trim(),
-    email: String(data?.email || '').trim(),
+    full_name: name,
+    email,
     phone: String(data?.phone || '').trim(),
-    message: String(data?.message || '').trim(),
+    company: String(data?.company || '').trim(),
+    participant_count: paxToParticipantCount(data?.pax),
+    preferred_date: String(data?.date || '').trim(),
+    comments: String(data?.comments || data?.message || '').trim(),
   }
-  if (!body.email) throw new Error('El correo es obligatorio.')
+
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
