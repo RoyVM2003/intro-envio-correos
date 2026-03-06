@@ -43,6 +43,9 @@ export function PanelPage() {
                 <Link to="/acceso" className="home-hero-btn home-hero-btn--campana" replace>
                   {t('panel.accessCampaign')}
                 </Link>
+                <Link to="/admin" className="home-hero-btn home-hero-btn--admin" replace>
+                  <i className="fas fa-users-cog" aria-hidden /> {t('admin.linkAdmin')}
+                </Link>
                 <button type="button" className="home-hero-btn home-hero-btn--logout" onClick={handleLogout} aria-label={t('home.logout')}>
                   <i className="fas fa-right-from-bracket" aria-hidden /> {t('panel.logout')}
                 </button>

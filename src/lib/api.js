@@ -154,4 +154,47 @@ export async function resendVerification(email) {
   return data
 }
 
+/**
+ * Admin: obtener usuarios. GET /api/v1/admin/users
+ * Requiere token de administrador.
+ */
+export async function adminGetUsers() {
+  const token = getToken()
+  if (!token) throw new Error('Debes iniciar sesión.')
+  const res = await fetch(`${API_BASE_URL}/api/v1/admin/users`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  const text = await res.text()
+  let data
+  try {
+    data = JSON.parse(text)
+  } catch {
+    data = { message: text }
+  }
+  if (!res.ok) throw new Error(data?.message || data?.error || 'No tienes permisos de administrador.')
+  return Array.isArray(data) ? data : data?.users ?? data?.data ?? []
+}
+
+/**
+ * Admin: actualizar usuario (p. ej. cambiar rol). PUT /api/v1/admin/users/{id}
+ */
+export async function adminUpdateUser(userId, payload) {
+  const token = getToken()
+  if (!token) throw new Error('Debes iniciar sesión.')
+  const res = await fetch(`${API_BASE_URL}/api/v1/admin/users/${userId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify(payload),
+  })
+  const text = await res.text()
+  let data
+  try {
+    data = JSON.parse(text)
+  } catch {
+    data = { message: text }
+  }
+  if (!res.ok) throw new Error(data?.message || data?.error || 'No se pudo actualizar.')
+  return data
+}
+
 export { API_BASE, API_BASE_URL }

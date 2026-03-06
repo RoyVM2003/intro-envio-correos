@@ -8,6 +8,7 @@ import { PanelLoginPage } from './pages/PanelLoginPage'
 import { HomePage } from './pages/HomePage'
 import { PanelPage } from './pages/PanelPage'
 import { CampanaPage } from './pages/CampanaPage'
+import { AdminUsersPage } from './pages/AdminUsersPage'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/panel" element={<PanelPage />} />
           <Route path="/campana" element={<CampanaPage />} />
+          <Route path="/admin" element={<AdminUsersPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </LanguageProvider>
