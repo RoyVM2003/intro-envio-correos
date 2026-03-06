@@ -8,17 +8,20 @@ const TEAM_IMAGE = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c
 const VALUE_CARDS = [
   {
     icon: 'fa-handshake',
-    title: 'ENGAJA A TUS CLIENTES',
-    desc: 'A través de experiencias personalizadas y campañas que impulsan tu negocio.',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80',
+    title: 'Generando relaciones sólidas y duraderas',
+    desc: 'Más allá de la venta. Consultoría B2B (Business to Business) que impulsa tu negocio con experiencias personalizadas y campañas que conectan.',
   },
   {
     icon: 'fa-users',
-    title: 'EMPODERA A TU EQUIPO',
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=400&q=80',
+    title: 'Empodera a tu equipo',
     desc: 'Con más movilidad, eficiencia operativa y herramientas listas para el futuro.',
   },
   {
     icon: 'fa-globe',
-    title: 'OPTIMIZA OPERACIONES',
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80',
+    title: 'Optimiza operaciones',
     desc: 'Conectando la demanda del cliente con tu cadena de suministro y comunicación.',
   },
 ]
@@ -42,8 +45,8 @@ const INFO_BOXES_LIGHT = [
     text: 'Para que la transformación digital de tu negocio sea un éxito, hace falta un enfoque de consultoría holístico y pragmático que abarque personas, procesos y tecnología con resultados tangibles. Tanto si buscas apoyo en el éxito estratégico como en el operativo, nuestro enfoque orientado al ROI impulsa la calidad, las mejores prácticas y la innovación constante.',
   },
   {
-    title: 'Technological Trailblazers',
-    text: 'Porque la innovación está en el ADN de OSDEMS, llevamos a nuestros clientes las innovaciones del mañana hoy. ¿Cómo? Tanto con nuestro centro de I+D interno que desarrolla soluciones específicas por sector y rol, como con nuestro ecosistema que reúne plataformas punteras de startups que están cambiando el mercado. Nuestro enfoque híbrido garantiza que obtengas la mejor solución disponible.',
+    title: 'Consultoría B2B (Technological Trailblazers)',
+    text: 'En consultoría B2B (Business to Business), la innovación está en el ADN de OSDEMS: llevamos a nuestros clientes las innovaciones del mañana hoy. Lo hacemos con nuestro centro de I+D interno que desarrolla soluciones específicas por sector y rol, y con un ecosistema de plataformas punteras que están cambiando el mercado. Este enfoque híbrido en consultoría B2B garantiza la mejor solución disponible para tu negocio.',
   },
 ]
 
@@ -192,6 +195,11 @@ export function IntroPage() {
           <div className="intro-cards-grid">
             {VALUE_CARDS.map((card) => (
               <article key={card.title} className="intro-card">
+                {card.image && (
+                  <div className="intro-card-image-wrap">
+                    <img src={card.image} alt="" className="intro-card-image" />
+                  </div>
+                )}
                 <div className="intro-card-icon">
                   <i className={`fas ${card.icon}`} aria-hidden />
                 </div>
@@ -204,7 +212,7 @@ export function IntroPage() {
         </div>
       </section>
 
-      {/* Cuadros de información — Business Consulting + Technological Trailblazers */}
+      {/* Cuadros de información — Business Consulting + Consultoría B2B */}
       <section className="intro-info-boxes intro-scroll-section" ref={setRef(2)}>
         <div className="intro-info-boxes-inner">
           {INFO_BOXES_LIGHT.map((box) => (
@@ -239,9 +247,11 @@ export function IntroPage() {
         </div>
       </section>
 
-      {/* Niveles Tier 1, 2, 3 (detalle) */}
+      {/* Niveles Tier 1, 2, 3 (detalle) — imagen de fondo ligera */}
       <section className="intro-tier intro-scroll-section" ref={setRef(4)}>
-        <div className="intro-wrap">
+        <div className="intro-tier-bg" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=60)' }} aria-hidden />
+        <div className="intro-tier-overlay" aria-hidden />
+        <div className="intro-wrap intro-tier-content">
           <h2 className="intro-tier-main-title">Servicio que no duerme</h2>
           <p className="intro-tier-lead">
             Tus soluciones mantenidas, seguras y listas para el futuro. Atención al Cliente 
