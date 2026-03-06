@@ -104,7 +104,7 @@ export function IntroPage() {
             el idioma del crecimiento
           </h1>
           <p className="intro-hero-tagline intro-hero-tagline--lead">
-            Menos tiempo perdido. Más resultados. Escala con lo que vende.
+            Menos tiempo perdido. Más resultados. <strong>ROI visible desde el primer día.</strong> Escala con lo que vende.
           </p>
         </div>
       </section>
@@ -113,6 +113,7 @@ export function IntroPage() {
       <div className="intro-hero-strip" aria-hidden>
         <div className="intro-hero-strip-track">
           {[
+            'ROI visible',
             'Transformación digital',
             'I+D e innovación',
             'Soporte 24/7',
@@ -128,6 +129,7 @@ export function IntroPage() {
             <span key={`${phrase}-1-dot`} className="intro-hero-strip-dot" aria-hidden>◆</span>,
           ])}
           {[
+            'ROI visible',
             'Transformación digital',
             'I+D e innovación',
             'Soporte 24/7',
@@ -150,7 +152,7 @@ export function IntroPage() {
         <div className="intro-split-dark">
           <div className="intro-split-dark-inner">
             <h2 className="intro-split-dark-title">Qué ofrece la aplicación</h2>
-            <p className="intro-split-dark-desc">Herramientas integradas para comunicar, medir y escalar tu negocio.</p>
+            <p className="intro-split-dark-desc">Comunicación que mide: envíos, aperturas, respuestas y <strong>seguimiento de ROI</strong> para que sepas qué campañas generan ganancias.</p>
             <div className="intro-split-dark-items">
               <div className="intro-split-dark-item">
                 <div className="intro-split-dark-item-icon"><i className="fas fa-paper-plane" aria-hidden /></div>
@@ -178,7 +180,7 @@ export function IntroPage() {
               Lanza campañas de correo masivo a tu lista de contactos, diseña mensajes con ayuda de IA y haz seguimiento desde un mismo panel: envíos, aperturas, respuestas y rendimiento.
             </p>
             <p className="intro-split-text">
-              Pensado para equipos que quieren medir el impacto y las ganancias de sus campañas sin depender de múltiples herramientas.
+              Pensado para directivos y equipos que quieren ver el <strong>ROI</strong> de cada campaña: impacto, ganancias y rendimiento en un solo panel, sin depender de múltiples herramientas.
             </p>
             <div className="intro-split-image-wrap">
               <img src={TEAM_IMAGE} alt="" className="intro-split-image" />
@@ -254,6 +256,9 @@ export function IntroPage() {
         <div className="intro-tier-overlay" aria-hidden />
         <div className="intro-wrap intro-tier-content">
           <h2 className="intro-tier-main-title">Servicio que no duerme</h2>
+          <p className="intro-tier-roi-callout">
+            Lo que ganas: continuidad operativa, menos paradas y <strong>ROI claro</strong> — tu equipo y tus clientes atendidos sin perder ventas.
+          </p>
           <p className="intro-tier-lead">
             Tus soluciones mantenidas, seguras y listas para el futuro. Atención al Cliente 
             con <strong>Helpdesk internacional 24/7</strong> y <strong>soporte Tier 1 a Tier 3</strong>.
@@ -293,7 +298,7 @@ export function IntroPage() {
       <section className="intro-cta intro-cta--compact">
         <div className="intro-wrap intro-cta-inner">
           <p className="intro-cta-heading">Tu siguiente paso</p>
-          <p className="intro-cta-text">Accede al panel y lanza tus campañas. Todo lo que necesitas, en un solo lugar.</p>
+          <p className="intro-cta-text">Accede al panel, lanza tus campañas y mide el <strong>ROI</strong> en tiempo real. Todo lo que necesitas, en un solo lugar.</p>
         </div>
       </section>
     </div>
