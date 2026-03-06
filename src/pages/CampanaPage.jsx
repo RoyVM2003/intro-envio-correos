@@ -179,8 +179,8 @@ export function CampanaPage() {
           </div>
         </div>
 
-        <div className={`workflow-root${hasSentCampaign ? ' workflow-root--sent' : ''}`}>
-          <div id="wf-strip" className={`wf-strip reveal${hasSentCampaign ? ' wf-strip--faded' : ''}`}>
+        <div className="workflow-root">
+          <div id="wf-strip" className="wf-strip reveal">
             <div className="wf-strip-inner">
               <h2 className="wf-strip-title">Tu campaña, paso a paso</h2>
               <div className="wf-stl" role="progressbar" aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={3} aria-label="Pasos de la campaña">
@@ -202,7 +202,7 @@ export function CampanaPage() {
             </div>
           </div>
 
-          <div className={`wf-cards wf-cards--single${hasSentCampaign ? ' wf-cards--faded' : ''}`} data-view="grid-3-pasos">
+          <div className="wf-cards wf-cards--single" data-view="grid-3-pasos">
             <div className="wrap">
               <Message text={globalMsg.text} type={globalMsg.type} />
               <div
