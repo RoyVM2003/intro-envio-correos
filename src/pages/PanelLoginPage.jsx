@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import { useAuth } from '../context/AuthContext'
+import { useLanguage } from '../context/LanguageContext'
 import { FormGroup } from '../components/FormGroup'
 import { Message } from '../components/Message'
 import { forgotPassword, verifyEmail, resendVerification } from '../services/authService'
@@ -12,6 +13,7 @@ import { forgotPassword, verifyEmail, resendVerification } from '../services/aut
  */
 export function PanelLoginPage() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
   const { login } = useAuth()
   const [showForgot, setShowForgot] = useState(false)
 
@@ -126,7 +128,7 @@ export function PanelLoginPage() {
 
       <div className="login-screen-inner">
         <p className="login-screen-eyebrow">OSDEMS Ventas</p>
-        <h1 className="login-screen-headline">CONFIGURA TU SUEÑO</h1>
+        <h1 className="login-screen-headline">{t('home.capsule')}</h1>
         <p className="login-screen-tagline">
           Email marketing con IA. Para quien piensa en ventas, no en cupones.
         </p>
@@ -154,7 +156,7 @@ export function PanelLoginPage() {
           />
           <button type="submit" className="login-cta" id="btnPanelLogin" disabled={loginLoading}>
             {loginLoading ? <span className="btn-spinner" aria-hidden="true" /> : null}
-            {loginLoading ? 'Conectando...' : 'Entrar'}
+            {loginLoading ? t('login.connecting') : t('login.submit')}
           </button>
         </form>
 
@@ -206,7 +208,7 @@ export function PanelLoginPage() {
         )}
 
         <p className="login-page-back" style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-          <Link to="/">← Volver a la introducción</Link>
+          <Link to="/">{t('panelLogin.back')}</Link>
         </p>
       </div>
 

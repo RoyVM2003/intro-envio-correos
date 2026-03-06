@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { login, setToken, setEmail, getToken } from '../lib/api'
+import { useLanguage } from '../context/LanguageContext'
 
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
 
@@ -10,6 +11,7 @@ const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app
  */
 export function LoginPage() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
   const [email, setEmailInput] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -27,16 +29,16 @@ export function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault()
     if (!email.trim() || !password) {
-      showMsg('Introduce correo y contraseña.', 'err')
+      showMsg(t('login.errorRequired'), 'err')
       return
     }
     setLoading(true)
-    showMsg('Conectando...', 'info')
+    showMsg(t('login.connecting'), 'info')
     try {
       const data = await login(email, password)
       const token = data.token || data.accessToken || data.access_token
       if (!token) {
-        showMsg('La API no devolvió token.', 'err')
+        showMsg(t('login.errorApi'), 'err')
         return
       }
       setToken(token)
@@ -44,7 +46,7 @@ export function LoginPage() {
       showMsg('', '')
       navigate('/panel', { replace: true })
     } catch (err) {
-      showMsg(err?.message || 'Error al iniciar sesión.', 'err')
+      showMsg(err?.message || t('login.errorLogin'), 'err')
     } finally {
       setLoading(false)
     }
@@ -59,8 +61,8 @@ export function LoginPage() {
         <Link to="/" className="login-page-logo">
           <img src={LOGO_URL} alt="OSDEMS" />
         </Link>
-        <h1 className="login-page-title">Iniciar sesión</h1>
-        <p className="login-page-subtitle">Accede al panel de campañas con tu cuenta.</p>
+        <h1 className="login-page-title">{t('login.title')}</h1>
+        <p className="login-page-subtitle">{t('login.subtitle')}</p>
 
         {message.text && (
           <div className={`login-msg login-msg--${message.type}`} role="alert">
@@ -70,19 +72,19 @@ export function LoginPage() {
 
         <form className="login-form" onSubmit={handleLogin}>
           <div className="login-form-group">
-            <label htmlFor="login-email">Correo</label>
+            <label htmlFor="login-email">{t('login.email')}</label>
             <input
               id="login-email"
               type="email"
               value={email}
               onChange={(e) => setEmailInput(e.target.value)}
-              placeholder="tu@email.com"
+              placeholder={t('login.placeholderEmail')}
               autoComplete="email"
               required
             />
           </div>
           <div className="login-form-group">
-            <label htmlFor="login-password">Contraseña</label>
+            <label htmlFor="login-password">{t('login.password')}</label>
             <input
               id="login-password"
               type="password"
@@ -94,12 +96,12 @@ export function LoginPage() {
             />
           </div>
           <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? 'Entrando…' : 'Entrar'}
+            {loading ? t('login.entering') : t('login.submit')}
           </button>
         </form>
 
         <p className="login-page-back">
-          <Link to="/">← Volver a la introducción</Link>
+          <Link to="/">{t('login.back')}</Link>
         </p>
       </div>
     </div>

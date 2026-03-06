@@ -61,6 +61,87 @@ body {
   min-height: 100vh;
 }
 
+/* Selector de idioma (globo) — visible en todas las pestañas */
+.lang-selector {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  font-family: var(--font-ui);
+}
+.lang-selector-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(11, 30, 51, 0.12);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy-900);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(11, 30, 51, 0.12);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.lang-selector-trigger:hover {
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(11, 30, 51, 0.15);
+}
+.lang-selector-trigger i.fa-globe {
+  color: var(--gold-600);
+  font-size: 1.1rem;
+}
+.lang-selector-current {
+  max-width: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lang-selector-chevron {
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  transition: transform 0.2s;
+}
+.lang-selector-chevron--open {
+  transform: rotate(180deg);
+}
+.lang-selector-dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  min-width: 10rem;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  background: #fff;
+  border: 1px solid rgba(11, 30, 51, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(11, 30, 51, 0.15);
+}
+.lang-selector-option {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--navy-900);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.lang-selector-option:hover {
+  background: var(--gray-100);
+}
+.lang-selector-option--active {
+  background: rgba(201, 162, 39, 0.15);
+  color: var(--navy-900);
+  font-weight: 600;
+}
+
 /* En login, body con mismo tono que el overlay para no ver barras */
 body:has(#loginPage),
 body:has(#panelLoginPage) {
@@ -5945,7 +6026,7 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-roi-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58) 0%, rgba(248, 250, 252, 0.72) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 250, 252, 0.92) 100%);
 }
 .intro-roi-inner {
   position: relative;

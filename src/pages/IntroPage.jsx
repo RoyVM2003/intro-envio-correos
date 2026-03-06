@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80'
@@ -66,7 +67,9 @@ const CONTINUITY_CARDS = [
 ]
 
 export function IntroPage() {
+  const { t } = useLanguage()
   const sectionRefs = useRef([])
+  const stripPhrases = Array.isArray(t('intro.strip.phrases')) ? t('intro.strip.phrases') : ['ROI visible', 'Transformación digital', 'I+D e innovación', 'Soporte 24/7', 'Consultoría de negocio', 'Resultados medibles', 'Escala con tecnología', 'Helpdesk internacional', 'Campañas que impulsan', 'Métricas en tiempo real', 'Soporte Tier 1 a Tier 3']
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -96,16 +99,16 @@ export function IntroPage() {
       <section className="intro-hero">
         <div className="intro-hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
         <div className="intro-hero-overlay" />
-        <Link to="/login" className="intro-hero-login">Iniciar sesión</Link>
+        <Link to="/login" className="intro-hero-login">{t('common.login')}</Link>
         <div className="intro-hero-content">
-          <div className="intro-hero-eyebrow">TU SOCIO EN TRANSFORMACIÓN</div>
+          <div className="intro-hero-eyebrow">{t('intro.hero.eyebrow')}</div>
           <h1 className="intro-hero-title">
-            Innovación que habla
+            {t('intro.hero.title1')}
             <br />
-            el idioma del crecimiento
+            {t('intro.hero.title2')}
           </h1>
           <p className="intro-hero-tagline intro-hero-tagline--lead">
-            Menos tiempo perdido. Más resultados. <strong>ROI visible desde el primer día.</strong> Escala con lo que vende.
+            {t('intro.hero.tagline')}
           </p>
         </div>
       </section>
@@ -113,35 +116,11 @@ export function IntroPage() {
       {/* Franja bajo hero — marquee en bucle, muchas frases */}
       <div className="intro-hero-strip" aria-hidden>
         <div className="intro-hero-strip-track">
-          {[
-            'ROI visible',
-            'Transformación digital',
-            'R&D e innovación',
-            'Soporte 24/7',
-            'Consultoría de negocio',
-            'Resultados medibles',
-            'Escala con tecnología',
-            'Helpdesk internacional',
-            'Campañas que impulsan',
-            'Métricas en tiempo real',
-            'Soporte Tier 1 a Tier 3',
-          ].flatMap((phrase) => [
+          {stripPhrases.flatMap((phrase) => [
             <span key={`${phrase}-1`} className="intro-hero-strip-phrase">{phrase}</span>,
             <span key={`${phrase}-1-dot`} className="intro-hero-strip-dot" aria-hidden>◆</span>,
           ])}
-          {[
-            'ROI visible',
-            'Transformación digital',
-            'R&D e innovación',
-            'Soporte 24/7',
-            'Consultoría de negocio',
-            'Resultados medibles',
-            'Escala con tecnología',
-            'Helpdesk internacional',
-            'Campañas que impulsan',
-            'Métricas en tiempo real',
-            'Soporte Tier 1 a Tier 3',
-          ].flatMap((phrase) => [
+          {stripPhrases.flatMap((phrase) => [
             <span key={`${phrase}-2`} className="intro-hero-strip-phrase">{phrase}</span>,
             <span key={`${phrase}-2-dot`} className="intro-hero-strip-dot" aria-hidden>◆</span>,
           ])}
@@ -152,36 +131,36 @@ export function IntroPage() {
       <section className="intro-split intro-scroll-section" ref={setRef(0)}>
         <div className="intro-split-dark">
           <div className="intro-split-dark-inner">
-            <h2 className="intro-split-dark-title">Qué ofrece la aplicación</h2>
-            <p className="intro-split-dark-desc">Comunicación que mide: envíos, aperturas, respuestas y <strong>seguimiento de ROI</strong> para que sepas qué campañas generan ganancias.</p>
+            <h2 className="intro-split-dark-title">{t('intro.split.title')}</h2>
+            <p className="intro-split-dark-desc">{t('intro.split.desc')}</p>
             <div className="intro-split-dark-items">
               <div className="intro-split-dark-item">
                 <div className="intro-split-dark-item-icon"><i className="fas fa-paper-plane" aria-hidden /></div>
-                <span className="intro-split-dark-item-label">Envíos masivos de correos</span>
+                <span className="intro-split-dark-item-label">{t('intro.split.item1')}</span>
               </div>
               <div className="intro-split-dark-item">
                 <div className="intro-split-dark-item-icon"><i className="fas fa-chart-line" aria-hidden /></div>
-                <span className="intro-split-dark-item-label">Dashboard con seguimiento de correos</span>
+                <span className="intro-split-dark-item-label">{t('intro.split.item2')}</span>
               </div>
               <div className="intro-split-dark-item">
                 <div className="intro-split-dark-item-icon"><i className="fas fa-reply" aria-hidden /></div>
-                <span className="intro-split-dark-item-label">Respuestas y métricas en tiempo real</span>
+                <span className="intro-split-dark-item-label">{t('intro.split.item3')}</span>
               </div>
               <div className="intro-split-dark-item">
                 <div className="intro-split-dark-item-icon"><i className="fas fa-chart-pie" aria-hidden /></div>
-                <span className="intro-split-dark-item-label">Seguimiento de ganancias y ROI</span>
+                <span className="intro-split-dark-item-label">{t('intro.split.item4')}</span>
               </div>
             </div>
           </div>
         </div>
         <div className="intro-split-light">
           <div className="intro-split-content intro-split-content--centered">
-            <h2 className="intro-split-title">Propósito</h2>
+            <h2 className="intro-split-title">{t('intro.split.purposeTitle')}</h2>
             <p className="intro-split-text">
-              Lanza campañas de correo masivo a tu lista de contactos, diseña mensajes con ayuda de IA y haz seguimiento desde un mismo panel: envíos, aperturas, respuestas y rendimiento.
+              {t('intro.split.purpose1')}
             </p>
             <p className="intro-split-text">
-              Pensado para directivos y equipos que quieren ver el <strong>ROI</strong> de cada campaña: impacto, ganancias y rendimiento en un solo panel, sin depender de múltiples herramientas.
+              {t('intro.split.purpose2')}
             </p>
             <div className="intro-split-image-wrap">
               <img src={TEAM_IMAGE} alt="" className="intro-split-image" />
@@ -194,11 +173,11 @@ export function IntroPage() {
       <section className="intro-cards intro-scroll-section" id="valor" ref={setRef(1)}>
         <div className="intro-wrap">
           <p className="intro-cards-intro">
-            Qué nos respalda
+            {t('intro.cards.intro')}
           </p>
           <div className="intro-cards-grid">
-            {VALUE_CARDS.map((card) => (
-              <article key={card.title} className="intro-card">
+            {VALUE_CARDS.map((card, i) => (
+              <article key={card.icon} className="intro-card">
                 {card.image && (
                   <div className="intro-card-image-wrap">
                     <img src={card.image} alt="" className="intro-card-image" />
@@ -207,8 +186,8 @@ export function IntroPage() {
                 <div className="intro-card-icon">
                   <i className={`fas ${card.icon}`} aria-hidden />
                 </div>
-                <h3 className="intro-card-title">{card.title}</h3>
-                <p className="intro-card-desc">{card.desc}</p>
+                <h3 className="intro-card-title">{t(`intro.cards.card${i + 1}Title`)}</h3>
+                <p className="intro-card-desc">{t(`intro.cards.card${i + 1}Desc`)}</p>
                 <div className="intro-card-accent" />
               </article>
             ))}
@@ -219,12 +198,14 @@ export function IntroPage() {
       {/* Cuadros de información — Business Consulting + Consultoría B2B */}
       <section className="intro-info-boxes intro-scroll-section" ref={setRef(2)}>
         <div className="intro-info-boxes-inner">
-          {INFO_BOXES_LIGHT.map((box) => (
-            <article key={box.title} className="intro-info-box">
-              <h2 className="intro-info-box-title">{box.title}</h2>
-              <p className="intro-info-box-text">{box.text}</p>
-            </article>
-          ))}
+          <article className="intro-info-box">
+            <h2 className="intro-info-box-title">{t('intro.info.box1Title')}</h2>
+            <p className="intro-info-box-text">{t('intro.info.box1Text')}</p>
+          </article>
+          <article className="intro-info-box">
+            <h2 className="intro-info-box-title">{t('intro.info.box2Title')}</h2>
+            <p className="intro-info-box-text">{t('intro.info.box2Text')}</p>
+          </article>
         </div>
       </section>
 
@@ -233,17 +214,13 @@ export function IntroPage() {
         <div className="intro-roi-bg" style={{ backgroundImage: `url(${ROI_BG_IMAGE})` }} aria-hidden />
         <div className="intro-roi-overlay" aria-hidden />
         <div className="intro-wrap intro-roi-inner">
-          <h2 className="intro-roi-title">ROI: lo que los directivos necesitan ver</h2>
+          <h2 className="intro-roi-title">{t('intro.roi.title')}</h2>
           <p className="intro-roi-lead">
-            Para dueños y directores la primera pregunta es clara: <strong>¿qué gano yo?</strong> Si en segundos no ven retorno, eficiencia o ventaja competitiva, pierden interés. Por eso el ROI no puede ser un detalle al final del discurso; tiene que estar visible desde el principio.
+            {t('intro.roi.lead')}
           </p>
           <div className="intro-roi-text">
-            <p>
-              Con esta aplicación no solo comunicas: <strong>mides</strong>. Cada campaña muestra envíos, aperturas, respuestas y seguimiento de ganancias en un mismo panel. Así puedes ver qué acciones generan ingresos y cuáles no, y tomar decisiones con datos en lugar de intuición.
-            </p>
-            <p>
-              El ROI visible significa menos tiempo perdido en herramientas dispersas, más control sobre el impacto de tus campañas y un mensaje claro para stakeholders y C-Level: aquí está el resultado, aquí está el número. Eso es lo que convence a quien tiene que aprobar la inversión.
-            </p>
+            <p>{t('intro.roi.p1')}</p>
+            <p>{t('intro.roi.p2')}</p>
           </div>
         </div>
       </section>
@@ -251,19 +228,19 @@ export function IntroPage() {
       {/* Continuidad + Tier — dos recuadros lado a lado (estilo Azure / cards) */}
       <section className="intro-continuity intro-scroll-section" id="servicio" ref={setRef(4)}>
         <div className="intro-continuity-inner">
-          <p className="intro-continuity-subtitle">Soporte y mantenimiento</p>
-          <h2 className="intro-continuity-title">Continuidad operativa y soporte</h2>
+          <p className="intro-continuity-subtitle">{t('intro.continuity.subtitle')}</p>
+          <h2 className="intro-continuity-title">{t('intro.continuity.title')}</h2>
           <p className="intro-continuity-intro">
-            Tus soluciones mantenidas, seguras y listas para el futuro. Atención al cliente estructurada por niveles de complejidad.
+            {t('intro.continuity.intro')}
           </p>
           <div className="intro-continuity-row">
-            {CONTINUITY_CARDS.map((card) => (
-              <article key={card.title} className="intro-continuity-card">
+            {CONTINUITY_CARDS.map((card, i) => (
+              <article key={card.icon} className="intro-continuity-card">
                 <div className="intro-continuity-card-icon">
                   <i className={`fas ${card.icon}`} aria-hidden />
                 </div>
-                <h3 className="intro-continuity-card-title">{card.title}</h3>
-                <p className="intro-continuity-card-text">{card.text}</p>
+                <h3 className="intro-continuity-card-title">{t(`intro.continuity.card${i + 1}Title`)}</h3>
+                <p className="intro-continuity-card-text">{t(`intro.continuity.card${i + 1}Text`)}</p>
                 <div className="intro-continuity-card-accent" />
               </article>
             ))}
@@ -276,25 +253,32 @@ export function IntroPage() {
         <div className="intro-tier-bg" style={{ backgroundImage: `url(${TIER_BG_IMAGE})` }} aria-hidden />
         <div className="intro-tier-overlay" aria-hidden />
         <div className="intro-wrap intro-tier-content">
-          <h2 className="intro-tier-main-title">Servicio que no duerme</h2>
+          <h2 className="intro-tier-main-title">{t('intro.tier.title')}</h2>
           <p className="intro-tier-roi-callout">
-            Lo que ganas: continuidad operativa, menos paradas y <strong>ROI claro</strong> — tu equipo y tus clientes atendidos sin perder ventas.
+            {t('intro.tier.roiCallout')}
           </p>
           <p className="intro-tier-lead">
-            Tus soluciones mantenidas, seguras y listas para el futuro. Atención al Cliente 
-            con <strong>Helpdesk internacional 24/7</strong> y <strong>soporte Tier 1 a Tier 3</strong>.
+            {t('intro.tier.lead')}
           </p>
           <p className="intro-tier-intro">
-            Los niveles de soporte técnico estructuran la atención al cliente según la complejidad del problema:
+            {t('intro.tier.intro')}
           </p>
           <div className="intro-tier-grid">
-            {TIER_LEVELS.map((t) => (
-              <div key={t.level} className="intro-tier-card">
-                <span className="intro-tier-badge">{t.level}</span>
-                <h3 className="intro-tier-title">{t.title}</h3>
-                <p className="intro-tier-desc">{t.desc}</p>
-              </div>
-            ))}
+            <div className="intro-tier-card">
+              <span className="intro-tier-badge">{t('intro.tier.tier1')}</span>
+              <h3 className="intro-tier-title">{t('intro.tier.tier1Title')}</h3>
+              <p className="intro-tier-desc">{t('intro.tier.tier1Desc')}</p>
+            </div>
+            <div className="intro-tier-card">
+              <span className="intro-tier-badge">{t('intro.tier.tier2')}</span>
+              <h3 className="intro-tier-title">{t('intro.tier.tier2Title')}</h3>
+              <p className="intro-tier-desc">{t('intro.tier.tier2Desc')}</p>
+            </div>
+            <div className="intro-tier-card">
+              <span className="intro-tier-badge">{t('intro.tier.tier3')}</span>
+              <h3 className="intro-tier-title">{t('intro.tier.tier3Title')}</h3>
+              <p className="intro-tier-desc">{t('intro.tier.tier3Desc')}</p>
+            </div>
           </div>
         </div>
       </section>
@@ -302,13 +286,13 @@ export function IntroPage() {
       {/* Cifras (conteo publicación) */}
       <section className="intro-figures intro-scroll-section" id="cifras" ref={setRef(6)}>
         <div className="intro-wrap">
-          <p className="intro-figures-subtitle">En números</p>
-          <h2 className="intro-figures-title">Cifras clave</h2>
+          <p className="intro-figures-subtitle">{t('intro.figures.subtitle')}</p>
+          <h2 className="intro-figures-title">{t('intro.figures.title')}</h2>
           <div className="intro-figures-grid">
-            {KEY_FIGURES.map((fig) => (
-              <div key={fig.label} className="intro-figure">
+            {KEY_FIGURES.map((fig, i) => (
+              <div key={fig.value} className="intro-figure">
                 <span className="intro-figure-value">{fig.value}</span>
-                <span className="intro-figure-label">{fig.label}</span>
+                <span className="intro-figure-label">{t(`intro.figures.fig${i + 1}`)}</span>
               </div>
             ))}
           </div>
@@ -318,8 +302,8 @@ export function IntroPage() {
       {/* Cierre de contenido — sin botón Iniciar ni footer (siempre visible) */}
       <section className="intro-cta intro-cta--compact">
         <div className="intro-wrap intro-cta-inner">
-          <p className="intro-cta-heading">Tu siguiente paso</p>
-          <p className="intro-cta-text">Accede al panel, lanza tus campañas y mide el <strong>ROI</strong> en tiempo real. Todo lo que necesitas, en un solo lugar.</p>
+          <p className="intro-cta-heading">{t('intro.cta.heading')}</p>
+          <p className="intro-cta-text">{t('intro.cta.text')}</p>
         </div>
       </section>
     </div>

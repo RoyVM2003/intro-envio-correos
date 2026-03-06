@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { getEmail, getToken, setToken, setEmail } from '../lib/api'
+import { useLanguage } from '../context/LanguageContext'
 
 const HOME_HERO_IMAGE = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80'
 
 export function HomePage() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
   const [userName, setUserName] = useState('')
 
   useEffect(() => {
@@ -32,23 +34,23 @@ export function HomePage() {
       <div className="home-hero-overlay" />
 
       <button type="button" className="home-hero-logout" onClick={handleLogout}>
-        Cerrar sesión
+        {t('home.logout')}
       </button>
 
-      <span className="home-hero-capsule">CONFIGURA TU SUEÑO</span>
+      <span className="home-hero-capsule">{t('home.capsule')}</span>
       <h1 className="home-hero-title">
-        Email marketing que habla el idioma del dinero
+        {t('home.title')}
       </h1>
       <p className="home-hero-tagline">
-        Ahorra tiempo a tu equipo, protege tu presupuesto y lanza campañas que venden como un auto premium, no como un cupón de comida rápida.
+        {t('home.tagline')}
       </p>
 
       <div className="home-welcome-panel">
-        <span className="home-welcome-badge">PANEL ACTIVO</span>
-        <p className="home-welcome-greeting">Hola, {userName}</p>
-        <p className="home-welcome-text">preparado para la próxima campaña</p>
+        <span className="home-welcome-badge">{t('home.panelActive')}</span>
+        <p className="home-welcome-greeting">{t('home.greeting')}, {userName}</p>
+        <p className="home-welcome-text">{t('home.prepared')}</p>
         <Link to="/panel" className="home-welcome-cta">
-          Acceder al panel
+          {t('home.accessPanel')}
         </Link>
       </div>
     </div>

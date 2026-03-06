@@ -1,10 +1,12 @@
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useLanguage } from '../context/LanguageContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { getToken } from '../lib/api'
 
 export function PanelPage() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
   useScrollReveal()
   const { email, logout } = useAuth()
   const username = email ? email.split('@')[0] : 'Usuario'
@@ -30,54 +32,53 @@ export function PanelPage() {
 
           <div className="home-hero-greeting reveal reveal-slow reveal-from-left">
             <div className="home-hero-greeting-top">
-              <span className="home-hero-greeting-label">Panel activo</span>
+              <span className="home-hero-greeting-label">{t('panel.greetingLabel')}</span>
             </div>
             <div className="home-hero-greeting-name">
-              Hola, <span className="hw-name-light">{isLoggedIn ? username : 'visitante'}</span>
+              {t('panel.hello')}, <span className="hw-name-light">{isLoggedIn ? username : t('panel.visitor')}</span>
             </div>
-            <div className="home-hero-greeting-sub">preparado para la próxima campaña</div>
+            <div className="home-hero-greeting-sub">{t('panel.prepared')}</div>
             {isLoggedIn ? (
               <>
                 <Link to="/acceso" className="home-hero-btn home-hero-btn--campana" replace>
-                  Acceder a tu campaña
+                  {t('panel.accessCampaign')}
                 </Link>
-                <button type="button" className="home-hero-btn home-hero-btn--logout" onClick={handleLogout} aria-label="Cerrar sesión">
-                  <i className="fas fa-right-from-bracket" aria-hidden /> Salir de la cuenta
+                <button type="button" className="home-hero-btn home-hero-btn--logout" onClick={handleLogout} aria-label={t('home.logout')}>
+                  <i className="fas fa-right-from-bracket" aria-hidden /> {t('panel.logout')}
                 </button>
               </>
             ) : (
               <Link to="/acceso" className="home-hero-btn home-hero-btn--access" replace>
-                Acceder al panel
+                {t('panel.accessPanel')}
               </Link>
             )}
           </div>
 
           <div className="home-hero-text reveal reveal-slow reveal-delay-1">
-            <div className="home-hero-eyebrow">CONFIGURA TU SUEÑO</div>
+            <div className="home-hero-eyebrow">{t('panel.eyebrow')}</div>
             <h1 className="home-hero-h1">
-              Email marketing que habla
+              {t('panel.title1')}
               <br />
-              el idioma del dinero
+              {t('panel.title2')}
             </h1>
             <p className="home-hero-desc">
-              Ahorra tiempo a tu equipo, protege tu presupuesto y lanza campañas
-              que venden como un auto premium, no como un cupón de comida rápida.
+              {t('panel.desc')}
             </p>
           </div>
         </div>
 
-        <section className="panel-foot-strip" aria-label="Por qué elegirnos">
+        <section className="panel-foot-strip" aria-label={t('panel.footLead')}>
           <div className="panel-foot-inner">
             <p className="panel-foot-lead">
-              <strong>Menos ruido, más resultados.</strong> Segmenta, personaliza y mide cada envío con herramientas pensadas para equipos que venden en serio.
+              <strong>{t('panel.footLead')}</strong>
             </p>
             <div className="panel-foot-bullets">
-              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> Envíos con IA y plantillas profesionales</span>
-              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> Importa contactos desde Excel en segundos</span>
-              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> Sin sorpresas en la factura: control total de tu campaña</span>
+              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> {t('panel.footBullet1')}</span>
+              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> {t('panel.footBullet2')}</span>
+              <span className="panel-foot-bullet"><i className="fas fa-check-circle" aria-hidden /> {t('panel.footBullet3')}</span>
             </div>
             <p className="panel-foot-cta">
-              Accede a tu campaña arriba y lanza tu primer envío hoy.
+              {t('panel.footCta')}
             </p>
           </div>
         </section>
