@@ -6128,14 +6128,6 @@ h4, h5, h6, button, input, select, textarea, label {
   grid-template-columns: 1fr;
   gap: 2rem;
 }
-@media (min-width: 900px) {
-  .intro-roi-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem 3rem;
-  }
-  .intro-roi-title { grid-column: 1 / -1; }
-  .intro-roi-lead { grid-column: 1 / -1; }
-}
 .intro-roi-title {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 4vw, 2.1rem);
@@ -6157,24 +6149,13 @@ h4, h5, h6, button, input, select, textarea, label {
   border-radius: 0 10px 10px 0;
 }
 .intro-roi-lead strong { color: #f0cf6a; }
-.intro-roi-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-@media (min-width: 900px) {
-  .intro-roi-cards {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-}
 .intro-roi-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 1.5rem 1.75rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
+  border-radius: 14px;
+  padding: 2rem 2.25rem;
+  font-size: 1.08rem;
+  line-height: 1.75;
   color: rgba(241, 245, 249, 0.9);
   transition: background 0.2s, border-color 0.2s;
 }
@@ -6183,9 +6164,10 @@ h4, h5, h6, button, input, select, textarea, label {
   border-color: rgba(212, 168, 58, 0.25);
 }
 .intro-roi-card p {
-  margin: 0;
+  margin: 0 0 1.25rem;
   text-align: justify;
 }
+.intro-roi-card p:last-child { margin-bottom: 0; }
 .intro-roi-card strong { color: #f0cf6a; }
 
 .intro-continuity {

@@ -153,13 +153,9 @@ export function IntroPage() {
         <div className="intro-roi-inner">
           <h2 className="intro-roi-title">{t('intro.roi.title')}</h2>
           <p className="intro-roi-lead">{t('intro.roi.lead')}</p>
-          <div className="intro-roi-cards">
-            <div className="intro-roi-card">
-              <p>{t('intro.roi.p1')}</p>
-            </div>
-            <div className="intro-roi-card">
-              <p>{t('intro.roi.p2')}</p>
-            </div>
+          <div className="intro-roi-card">
+            <p>{t('intro.roi.p1')}</p>
+            <p>{t('intro.roi.p2')}</p>
           </div>
         </div>
       </section>
