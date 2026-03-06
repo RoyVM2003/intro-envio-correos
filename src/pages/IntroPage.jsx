@@ -87,7 +87,7 @@ export function IntroPage() {
       { rootMargin: '0px 0px -80px 0px', threshold: 0.08 }
     )
     const sections = sectionRefs.current
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 8; i++) {
       if (sections[i]) observer.observe(sections[i])
     }
     return () => observer.disconnect()
@@ -313,14 +313,6 @@ export function IntroPage() {
       <div className="intro-scroll-section" ref={setRef(7)}>
         <DiagnosisForm t={t} />
       </div>
-
-      {/* Cierre de contenido — CTA */}
-      <section className="intro-cta intro-cta--compact intro-scroll-section" ref={setRef(8)}>
-        <div className="intro-wrap intro-cta-inner">
-          <p className="intro-cta-heading">{t('intro.cta.heading')}</p>
-          <p className="intro-cta-text">{t('intro.cta.text')}</p>
-        </div>
-      </section>
 
       <IntroFooter />
     </div>
