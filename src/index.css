@@ -5940,7 +5940,15 @@ h4, h5, h6, button, input, select, textarea, label {
   line-height: 1.4;
   letter-spacing: 0.06em;
 }
-.intro-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem 5rem; max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 3rem); }
+.intro-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 340px));
+  gap: 4rem 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+  justify-content: center;
+}
 .intro-card {
   background: #fff;
   border: 1px solid #e2e8f0;
