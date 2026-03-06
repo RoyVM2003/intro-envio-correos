@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Panel } from './Panel'
 import { FormGroup } from './FormGroup'
 import { Message } from './Message'
+import { useLanguage } from '../context/LanguageContext'
 import { createCampaign, updateCampaign, deleteCampaign } from '../services/campaignService'
 
 export function CampaignForm({
@@ -17,6 +18,7 @@ export function CampaignForm({
   onBodyChange,
   disabled = false,
 }) {
+  const { t: tFn } = useLanguage()
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState({ text: '', type: 'info' })
 
@@ -24,18 +26,18 @@ export function CampaignForm({
     const sub = (typeof subject === 'string' ? subject : subject?.value ?? '').trim()
     const b = (typeof body === 'string' ? body : body?.value ?? '').trim()
     if (!sub || !b) {
-      setMessage({ text: 'Escribe el asunto y el contenido del correo.', type: 'err' })
+      setMessage({ text: tFn('campana.writeSubject'), type: 'err' })
       return
     }
     const id = selectedCampaignId || ''
     setLoading(true)
-    setMessage({ text: id ? 'Actualizando...' : 'Creando campaña...', type: 'info' })
+    setMessage({ text: id ? tFn('campana.updating') : tFn('campana.creating'), type: 'info' })
     try {
       const data = id
         ? await updateCampaign(id, { name: sub, subject: sub, body: b })
         : await createCampaign({ name: sub, subject: sub, body: b })
       const newId = data.id ?? data.campaign_id ?? data.id_campaign ?? data.data?.id ?? data.data?.id_campaign ?? id
-      setMessage({ text: 'Campaña guardada.', type: 'ok' })
+      setMessage({ text: tFn('campana.saved'), type: 'ok' })
       if (id) {
         onCampaignUpdated?.(id, { name: sub, subject: sub, body: b })
       } else if (newId) {
@@ -44,7 +46,7 @@ export function CampaignForm({
       }
     } catch (err) {
       const msg = err.data?.message ?? err.data?.error ?? (typeof err.data === 'object' ? JSON.stringify(err.data) : err.message)
-      setMessage({ text: 'No se pudo guardar la campaña. ' + String(msg ?? ''), type: 'err' })
+      setMessage({ text: tFn('campana.saveFail') + ' ' + String(msg ?? ''), type: 'err' })
     } finally {
       setLoading(false)
     }
@@ -52,12 +54,12 @@ export function CampaignForm({
 
   const handleDelete = async () => {
     const id = selectedCampaignId || ''
-    if (!id || !window.confirm('¿Eliminar esta campaña?')) return
+    if (!id || !window.confirm(tFn('campana.deleteConfirm'))) return
     setLoading(true)
     setMessage({ text: '', type: 'info' })
     try {
       await deleteCampaign(id)
-      setMessage({ text: 'Campaña eliminada.', type: 'ok' })
+      setMessage({ text: tFn('campana.deleted'), type: 'ok' })
       onCampaignDeleted?.(id)
       onSelectedCampaignIdChange?.('')
       onSubjectChange?.('')
@@ -76,13 +78,13 @@ export function CampaignForm({
       const text = String(msg || '')
       const isAlreadyDeleted = /no encontrada/i.test(text) || /ya está eliminada/i.test(text) || /ya esta eliminada/i.test(text)
       if (isAlreadyDeleted) {
-        setMessage({ text: 'Esa campaña ya no existía; la hemos quitado de la lista.', type: 'ok' })
+        setMessage({ text: tFn('campana.alreadyDeleted'), type: 'ok' })
         onCampaignDeleted?.(id)
         onSelectedCampaignIdChange?.('')
         onSubjectChange?.('')
         onBodyChange?.('')
       } else {
-        setMessage({ text: 'No se pudo eliminar. ' + text, type: 'err' })
+        setMessage({ text: tFn('campana.deleteFail') + ' ' + text, type: 'err' })
       }
     } finally {
       setLoading(false)
@@ -94,8 +96,8 @@ export function CampaignForm({
   const bodyVal = typeof body === 'string' ? body : body?.value ?? ''
 
   return (
-    <Panel title="Paso 2 · Contenido de la campaña" icon="fas fa-envelope">
-      <FormGroup label="Campañas guardadas" id="selCampaign" hint="Elige una campaña guardada para rellenar asunto y mensaje, o selecciona «Crear nueva campaña» para empezar desde cero.">
+    <Panel title={tFn('campana.panel2Title')} icon="fas fa-envelope">
+      <FormGroup label={tFn('campana.campaignsLabel')} id="selCampaign" hint={tFn('campana.campaignsHint')}>
         <select
           id="selCampaign"
           value={selectedCampaignId || ''}
@@ -107,7 +109,7 @@ export function CampaignForm({
           }}
           disabled={disabled}
         >
-          <option value="">Crear nueva campaña</option>
+          <option value="">{tFn('campana.createNew')}</option>
           {list.map((c) => {
             const cid = c.id ?? c.campaign_id
             const name = ((c.name ?? c.subject) || 'Campaña').slice(0, 60) || 'Campaña #' + cid
@@ -115,20 +117,19 @@ export function CampaignForm({
           })}
         </select>
       </FormGroup>
-      <FormGroup label="Asunto del correo" id="campSubject">
-        <input type="text" id="campSubject" placeholder="Ej: Novedades de este mes" value={subVal} autoComplete="off" onChange={(e) => onSubjectChange?.(e.target.value)} disabled={disabled} />
+      <FormGroup label={tFn('campana.asuntoLabel')} id="campSubject">
+        <input type="text" id="campSubject" placeholder={tFn('campana.asuntoPlaceholder')} value={subVal} autoComplete="off" onChange={(e) => onSubjectChange?.(e.target.value)} disabled={disabled} />
       </FormGroup>
-      <FormGroup label="Mensaje (cuerpo del correo)" id="campBody">
-        <textarea id="campBody" placeholder="Escribe aquí el contenido del correo..." value={bodyVal} autoComplete="off" onChange={(e) => onBodyChange?.(e.target.value)} disabled={disabled} />
+      <FormGroup label={tFn('campana.mensajeLabel')} id="campBody">
+        <textarea id="campBody" placeholder={tFn('campana.mensajePlaceholder')} value={bodyVal} autoComplete="off" onChange={(e) => onBodyChange?.(e.target.value)} disabled={disabled} />
       </FormGroup>
-      <p className="form-group hint">Para que tus campañas se puedan enviar, asegúrate de haber cargado al menos un archivo de contactos en el Paso 1.</p>
       <div className="form-group" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
         <button type="button" className="btn btn-secondary" onClick={handleSave} disabled={loading || disabled}>
-          <i className="fas fa-save" aria-hidden /> {selectedCampaignId ? 'Actualizar campaña' : 'Crear campaña'}
+          <i className="fas fa-save" aria-hidden /> {tFn('campana.guardar')}
         </button>
         {selectedCampaignId && (
           <button type="button" className="btn btn-danger" onClick={handleDelete} disabled={loading || disabled}>
-            <i className="fas fa-trash" aria-hidden /> Eliminar campaña
+            <i className="fas fa-trash" aria-hidden /> {tFn('campana.eliminar')}
           </button>
         )}
       </div>

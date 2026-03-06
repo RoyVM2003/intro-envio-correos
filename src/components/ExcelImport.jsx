@@ -1,9 +1,11 @@
 import { useState, useRef } from 'react'
 import { Panel } from './Panel'
 import { Message } from './Message'
+import { useLanguage } from '../context/LanguageContext'
 import { importExcel } from '../services/excelService'
 
 export function ExcelImport({ onImportSuccess }) {
+  const { t } = useLanguage()
   const [file, setFile] = useState(null)
   const [fileName, setFileName] = useState('')
   const [loading, setLoading] = useState(false)
@@ -28,11 +30,11 @@ export function ExcelImport({ onImportSuccess }) {
 
   const handleImport = async () => {
     if (!file) {
-      setMessage({ text: 'Elige un archivo Excel (.xlsx) para importar.', type: 'err' })
+      setMessage({ text: t('campana.excelChoose'), type: 'err' })
       return
     }
     setLoading(true)
-    setMessage({ text: 'Importando...', type: 'info' })
+    setMessage({ text: t('campana.excelImporting'), type: 'info' })
     try {
       const data = await importExcel(file)
       const inserted = data.insertedCount ?? 0
@@ -40,18 +42,15 @@ export function ExcelImport({ onImportSuccess }) {
       const errors = data.errorCount ?? 0
 
       let text
+      const rep = (s, n, d, e) => String(s).replace(/\{\{n\}\}/g, n).replace(/\{\{d\}\}/g, d).replace(/\{\{e\}\}/g, e)
       if (inserted > 0 && errors === 0) {
-        text = duplicates > 0
-          ? `Listo. Se añadieron ${inserted} contactos nuevos. ${duplicates} correos ya estaban guardados y no se repitieron.`
-          : `Listo. Se añadieron ${inserted} contactos a tu lista. Ya puedes lanzar tu campaña.`
+        text = duplicates > 0 ? rep(t('campana.excelOk1'), inserted, duplicates, errors) : rep(t('campana.excelOk2'), inserted, duplicates, errors)
       } else if (inserted === 0 && duplicates > 0 && errors === 0) {
-        text = `Los ${duplicates} correos del archivo ya estaban en tu lista. Puedes usarlos para enviar tu campaña.`
+        text = rep(t('campana.excelOk3'), inserted, duplicates, errors)
       } else if (errors > 0) {
-        text = inserted > 0
-          ? `Se añadieron ${inserted} contactos. ${errors} correos no pudieron importarse (revisa que sean válidos).`
-          : `No se pudieron importar ${errors} correos. Revisa que la columna se llame "email" y contenga correos válidos.`
+        text = inserted > 0 ? rep(t('campana.excelPartial'), inserted, duplicates, errors) : rep(t('campana.excelError'), inserted, duplicates, errors)
       } else {
-        text = 'El archivo no contenía contactos nuevos. Revisa que tenga una columna "email" con correos válidos.'
+        text = t('campana.excelEmpty')
       }
 
       setMessage({ text, type: errors > 0 && inserted === 0 ? 'err' : 'ok' })
@@ -61,16 +60,16 @@ export function ExcelImport({ onImportSuccess }) {
         err.data?.message ||
         err.data?.error ||
         (err.data && typeof err.data === 'object' ? JSON.stringify(err.data) : err.message)
-      setMessage({ text: 'No se pudo importar el archivo. ' + msg, type: 'err' })
+      setMessage({ text: t('campana.excelFail') + ' ' + msg, type: 'err' })
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <Panel title="Paso 1 — Importar contactos" icon="fas fa-users">
+    <Panel title={t('campana.panel1Title')} icon="fas fa-users">
       <p className="form-hint-text">
-        Sube un archivo <strong>.xlsx</strong> con la columna <strong>email</strong> (y opcionalmente <strong>nombre</strong>). Esos serán los destinatarios de tu campaña.
+        {t('campana.excelHint')}
       </p>
       <div
         className={`upload-zone${dragging ? ' upload-zone--drag' : ''}${file ? ' upload-zone--ready' : ''}`}
@@ -81,14 +80,14 @@ export function ExcelImport({ onImportSuccess }) {
         role="button"
         tabIndex={0}
         onKeyDown={(e) => e.key === 'Enter' && inputRef.current?.click()}
-        aria-label="Zona para subir archivo Excel"
+        aria-label={t('campana.excelImportZone')}
       >
         <div className={`upload-zone-icon${file ? ' upload-zone-icon--ready' : ''}`}>
           <i className={file ? 'fas fa-file-circle-check' : 'fas fa-cloud-arrow-up'} aria-hidden />
         </div>
         <div className="upload-zone-info">
-          <strong>{file ? fileName : 'Arrastra tu Excel aquí'}</strong>
-          <span>{file ? 'Archivo listo · haz clic para cambiarlo' : 'o haz clic para seleccionar · formato .xlsx'}</span>
+          <strong>{file ? fileName : t('campana.excelDrag')}</strong>
+          <span>{file ? t('campana.excelReady') : t('campana.excelClick')}</span>
         </div>
         {file && (
           <div className="upload-zone-badge">
@@ -105,11 +104,11 @@ export function ExcelImport({ onImportSuccess }) {
         style={{ display: 'none' }}
       />
       <details className="upload-format-hint">
-        <summary>¿Qué formato debe tener el Excel?</summary>
+        <summary>{t('campana.excelFormatTitle')}</summary>
         <ul>
-          <li>Primera fila con encabezados de columna.</li>
-          <li>Columna obligatoria: <strong>email</strong>. Opcional: <strong>nombre</strong>.</li>
-          <li>Correos válidos y sin duplicados.</li>
+          <li>{t('campana.excelFormat1')}</li>
+          <li>{t('campana.excelFormat2')}</li>
+          <li>{t('campana.excelFormat3')}</li>
         </ul>
       </details>
       <button
@@ -118,7 +117,7 @@ export function ExcelImport({ onImportSuccess }) {
         onClick={handleImport}
         disabled={loading || !file}
       >
-        {loading ? (<><span className="btn-spinner" aria-hidden /> Importando...</>) : (<><i className="fas fa-upload" aria-hidden /> Importar contactos</>)}
+        {loading ? (<><span className="btn-spinner" aria-hidden /> {t('campana.excelImporting')}</>) : (<><i className="fas fa-upload" aria-hidden /> {t('campana.excelImportBtn')}</>)}
       </button>
       <Message text={message.text} type={message.type} className="mt-1" />
     </Panel>

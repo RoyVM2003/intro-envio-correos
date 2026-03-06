@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { Panel } from './Panel'
 import { FormGroup } from './FormGroup'
 import { Message } from './Message'
+import { useLanguage } from '../context/LanguageContext'
 import { generateText, getSubjectAndBodyFromAIResponse } from '../services/aiService'
 
 export function AIAssistant({ body, onBodyAppend, onSubjectChange, onSuggestionApplied }) {
+  const { t } = useLanguage()
   const [prompt, setPrompt] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState({ text: '', type: 'info' })
@@ -13,12 +15,12 @@ export function AIAssistant({ body, onBodyAppend, onSubjectChange, onSuggestionA
   const handleSuggest = async () => {
     const p = prompt.trim()
     if (!p) {
-      setMessage({ text: 'Escribe primero una breve descripción de la promo o del público objetivo.', type: 'err' })
+      setMessage({ text: t('campana.aiPromptRequired'), type: 'err' })
       return
     }
     setLoading(true)
     setSuggestion({ subject: '', body: '' })
-    setMessage({ text: 'Generando sugerencia...', type: 'info' })
+    setMessage({ text: t('campana.aiGeneratingMsg'), type: 'info' })
     try {
       const data = await generateText(p)
       const { subject: suggestedSubject, body: suggestedBody } = getSubjectAndBodyFromAIResponse(data)
@@ -29,38 +31,38 @@ export function AIAssistant({ body, onBodyAppend, onSubjectChange, onSuggestionA
         onBodyAppend?.(currentBody ? currentBody + '\n\n' + suggestedBody : suggestedBody)
       }
       if (suggestedSubject || suggestedBody) {
-        setMessage({ text: 'Listo. Hemos rellenado el asunto y el mensaje arriba. Revísalos y edita lo que quieras.', type: 'ok' })
+        setMessage({ text: t('campana.aiDone'), type: 'ok' })
         onSuggestionApplied?.()
       } else {
-        setMessage({ text: 'No pudimos obtener una sugerencia válida. Escribe el asunto y el mensaje tú mismo en el Paso 2.', type: 'err' })
+        setMessage({ text: t('campana.aiNoResult'), type: 'err' })
       }
     } catch (err) {
       const msg = err.data?.message ?? err.data?.error ?? (typeof err.data === 'object' ? JSON.stringify(err.data) : err.message)
-      setMessage({ text: 'No se pudo generar la sugerencia. ' + msg, type: 'err' })
+      setMessage({ text: t('campana.aiFail') + ' ' + msg, type: 'err' })
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <Panel title="Paso 2B · Mejora el texto con IA (opcional)" icon="fas fa-robot">
-      <FormGroup label="Describe la promoción o el público objetivo" id="aiPrompt">
-        <textarea id="aiPrompt" className="ai-prompt-input" placeholder="Ej: Promoción de renovación anual con descuento para clientes actuales, tono cercano y profesional." value={prompt} onChange={(e) => setPrompt(e.target.value)} />
+    <Panel title={t('campana.panel2bTitle')} icon="fas fa-robot">
+      <FormGroup label={t('campana.aiLabel')} id="aiPrompt">
+        <textarea id="aiPrompt" className="ai-prompt-input" placeholder={t('campana.aiPlaceholder')} value={prompt} onChange={(e) => setPrompt(e.target.value)} />
       </FormGroup>
       <button type="button" className="btn btn-secondary" onClick={handleSuggest} disabled={loading}>
-        {loading ? (<><span className="btn-spinner" aria-hidden /> Generando...</>) : (<><i className="fas fa-magic" aria-hidden /> Sugerir asunto y texto</>)}
+        {loading ? (<><span className="btn-spinner" aria-hidden /> {t('campana.aiGenerating')}</>) : (<><i className="fas fa-magic" aria-hidden /> {t('campana.aiSuggest')}</>)}
       </button>
       <Message text={message.text} type={message.type} className="mt-1" />
       {(suggestion.subject || suggestion.body) && (
         <div className="ai-suggestion-card">
           <div className="ai-suggestion-header">
-            <span className="ai-suggestion-title">Propuesta de la IA</span>
-            <span className="ai-suggestion-subtitle">Se ha aplicado arriba. Revisa el asunto y el mensaje.</span>
+            <span className="ai-suggestion-title">{t('campana.aiProposal')}</span>
+            <span className="ai-suggestion-subtitle">{t('campana.aiApplied')}</span>
           </div>
-          {suggestion.subject && <p className="ai-suggestion-subject"><span>Asunto sugerido:</span> {suggestion.subject}</p>}
+          {suggestion.subject && <p className="ai-suggestion-subject"><span>{t('campana.aiSubjectLabel')}</span> {suggestion.subject}</p>}
           {suggestion.body && (
             <div className="ai-suggestion-body">
-              <span className="ai-suggestion-label">Mensaje sugerido:</span>
+              <span className="ai-suggestion-label">{t('campana.aiBodyLabel')}</span>
               <pre>{suggestion.body}</pre>
             </div>
           )}

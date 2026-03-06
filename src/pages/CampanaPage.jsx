@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useLanguage } from '../context/LanguageContext'
 import { ExcelImport } from '../components/ExcelImport'
 import { CampaignForm } from '../components/CampaignForm'
 import { AIAssistant } from '../components/AIAssistant'
@@ -14,9 +15,11 @@ const HERO_IMG = 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?a
 
 export function CampanaPage() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
   useScrollReveal()
   const { email, logout } = useAuth()
-  const username = email ? email.split('@')[0] : 'Usuario'
+  const raw = email ? String(email).split('@')[0] : ''
+  const username = raw ? raw.replace(/[._]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || raw : t('panel.visitor')
 
   const [designAiTab, setDesignAiTab] = useState('design')
   const [campaigns, setCampaigns] = useState([])
@@ -155,26 +158,25 @@ export function CampanaPage() {
           <div className="home-hero-overlay" />
           <div className="home-hero-greeting reveal reveal-slow reveal-from-left">
             <div className="home-hero-greeting-top">
-              <span className="home-hero-greeting-label">Panel activo</span>
+              <span className="home-hero-greeting-label">{t('panel.greetingLabel')}</span>
             </div>
             <div className="home-hero-greeting-name">
-              Hola, <span className="hw-name-light">{username}</span>
+              {t('panel.hello')}, <span className="hw-name-light">{username}</span>
             </div>
-            <div className="home-hero-greeting-sub">preparado para la próxima campaña</div>
-            <button type="button" className="home-hero-btn home-hero-btn--logout" onClick={() => { logout(); navigate('/', { replace: true }) }} aria-label="Cerrar sesión">
-              <i className="fas fa-right-from-bracket" aria-hidden /> Salir de la cuenta
+            <div className="home-hero-greeting-sub">{t('panel.prepared')}</div>
+            <button type="button" className="home-hero-btn home-hero-btn--logout" onClick={() => { logout(); navigate('/', { replace: true }) }} aria-label={t('panel.logout')}>
+              <i className="fas fa-right-from-bracket" aria-hidden /> {t('panel.logout')}
             </button>
           </div>
           <div className="home-hero-text reveal reveal-slow reveal-delay-1">
-            <div className="home-hero-eyebrow">CONFIGURA TU SUEÑO</div>
+            <div className="home-hero-eyebrow">{t('panel.eyebrow')}</div>
             <h1 className="home-hero-h1">
-              Email marketing que habla
+              {t('panel.title1')}
               <br />
-              el idioma del dinero
+              {t('panel.title2')}
             </h1>
             <p className="home-hero-desc">
-              Ahorra tiempo a tu equipo, protege tu presupuesto y lanza campañas
-              que venden como un auto premium, no como un cupón de comida rápida.
+              {t('panel.desc')}
             </p>
           </div>
         </div>
@@ -182,21 +184,21 @@ export function CampanaPage() {
         <div className="workflow-root">
           <div id="wf-strip" className="wf-strip reveal">
             <div className="wf-strip-inner">
-              <h2 className="wf-strip-title">Tu campaña, paso a paso</h2>
-              <div className="wf-stl" role="progressbar" aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={3} aria-label="Pasos de la campaña">
+              <h2 className="wf-strip-title">{t('campana.stepTitle')}</h2>
+              <div className="wf-stl" role="progressbar" aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={3} aria-label={t('campana.stepTitle')}>
                 <span className={`wf-stl-step${currentStep === 1 ? ' wf-stl-step--active' : ''}${hasImportedExcel ? ' wf-stl-step--done' : ''}`}>
                   <span className="wf-stl-num">{hasImportedExcel ? <i className="fas fa-check" /> : '1'}</span>
-                  <span className="wf-stl-label">Importar</span>
+                  <span className="wf-stl-label">{t('campana.step1')}</span>
                 </span>
                 <div className="wf-stl-line" />
                 <span className={`wf-stl-step${currentStep === 2 ? ' wf-stl-step--active' : ''}${hasSubjectAndBody ? ' wf-stl-step--done' : ''}`}>
                   <span className="wf-stl-num">{hasSubjectAndBody ? <i className="fas fa-check" /> : '2'}</span>
-                  <span className="wf-stl-label">Diseñar + IA</span>
+                  <span className="wf-stl-label">{t('campana.step2')}</span>
                 </span>
                 <div className="wf-stl-line" />
                 <span className={`wf-stl-step${currentStep === 3 ? ' wf-stl-step--active' : ''}${hasSentCampaign ? ' wf-stl-step--done' : ''}`}>
                   <span className="wf-stl-num">{hasSentCampaign ? <i className="fas fa-check" /> : '3'}</span>
-                  <span className="wf-stl-label">Lanzar</span>
+                  <span className="wf-stl-label">{t('campana.step3')}</span>
                 </span>
               </div>
             </div>
@@ -222,10 +224,10 @@ export function CampanaPage() {
                   <div className="cstab-root">
                     <div className="cstab-bar">
                       <button type="button" className={`cstab${designAiTab === 'design' ? ' cstab--active' : ''}`} onClick={() => setDesignAiTab('design')}>
-                        <i className="fas fa-envelope-open-text" /> Diseñar campaña
+                        <i className="fas fa-envelope-open-text" /> {t('campana.tabDesign')}
                       </button>
                       <button type="button" className={`cstab${designAiTab === 'ai' ? ' cstab--active' : ''}`} onClick={() => setDesignAiTab('ai')}>
-                        <i className="fas fa-wand-magic-sparkles" /> Afinar con IA
+                        <i className="fas fa-wand-magic-sparkles" /> {t('campana.tabAI')}
                       </button>
                     </div>
                     <div className={`cstab-pane${designAiTab === 'design' ? ' cstab-pane--active' : ''}`}>
