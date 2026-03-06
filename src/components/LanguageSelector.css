@@ -50,7 +50,8 @@
 
 .lang-selector-dropdown {
   position: absolute;
-  bottom: calc(100% + 0.35rem);
+  bottom: 100%;
+  margin-bottom: 0.35rem;
   top: auto;
   right: 0;
   left: auto;
