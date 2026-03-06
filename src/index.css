@@ -6515,6 +6515,11 @@ h4, h5, h6, button, input, select, textarea, label {
 .login-page-back { margin: 1.5rem 0 0; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; }
 .login-page-back a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s; }
 .login-page-back a:hover { color: var(--gold-300); }
+.login-page-back .login-page-link {
+  background: none; border: none; padding: 0; font: inherit; cursor: pointer;
+  color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s;
+}
+.login-page-back .login-page-link:hover { color: var(--gold-300); }
 
 /* Panel: navbar mínima (solo segundo logo + logout con icono) */
 .nav-bar--minimal .nav-bar-accent { display: none; }
