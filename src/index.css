@@ -6018,12 +6018,12 @@ h4, h5, h6, button, input, select, textarea, label {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.6;
+  opacity: 0.95;
 }
 .intro-tier-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(248, 250, 252, 0.88) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(248, 250, 252, 0.55) 100%);
 }
 .intro-tier-content {
   position: relative;
@@ -6042,7 +6042,15 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-tier-lead strong { color: var(--navy-900); background: rgba(201, 162, 39, 0.25); padding: 0.15em 0.4em; border-radius: 4px; font-weight: 700; }
 .intro-tier-intro { font-size: 1.05rem; color: #64748b; margin: 0 0 1.25rem; line-height: 1.6; }
 .intro-tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.intro-tier-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; }
+.intro-tier-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(11, 30, 51, 0.08);
+}
 .intro-tier-badge {
   display: inline-block;
   font-size: 0.75rem;
