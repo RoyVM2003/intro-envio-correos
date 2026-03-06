@@ -5925,6 +5925,51 @@ h4, h5, h6, button, input, select, textarea, label {
 @media (min-width: 769px) {
   .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
 }
+
+/* Apartado ROI — texto para directivos */
+.intro-roi {
+  padding: 3rem 0;
+  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: #0f172a;
+}
+.intro-roi-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.intro-roi-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--navy-900);
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.intro-roi-lead {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: #334155;
+  margin: 0 0 1.5rem;
+  font-weight: 500;
+}
+.intro-roi-lead strong {
+  color: var(--navy-900);
+  background: rgba(201, 162, 39, 0.22);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.intro-roi-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #475569;
+}
+.intro-roi-text p {
+  margin: 0 0 1rem;
+  text-align: justify;
+}
+.intro-roi-text p:last-child { margin-bottom: 0; }
+.intro-roi-text strong { color: var(--navy-900); }
+
 .intro-continuity {
   padding: 3rem 0;
   background: linear-gradient(180deg, var(--navy-900) 0%, #0f2744 100%);

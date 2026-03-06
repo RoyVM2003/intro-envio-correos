@@ -47,7 +47,7 @@ const INFO_BOXES_LIGHT = [
   },
   {
     title: 'Consultoría B2B (Technological Trailblazers)',
-    text: 'En consultoría B2B (Business to Business), la innovación está en el ADN de OSDEMS: llevamos a nuestros clientes las innovaciones del mañana hoy. Lo hacemos con nuestro centro de I+D interno que desarrolla soluciones específicas por sector y rol, y con un ecosistema de plataformas punteras que están cambiando el mercado. Este enfoque híbrido en consultoría B2B garantiza la mejor solución disponible para tu negocio.',
+    text: 'En consultoría B2B (Business to Business), la innovación está en el ADN de OSDEMS: llevamos a nuestros clientes las innovaciones del mañana hoy. Lo hacemos con nuestro centro de R&D interno que desarrolla soluciones específicas por sector y rol, y con un ecosistema de plataformas punteras que están cambiando el mercado. Este enfoque híbrido en consultoría B2B garantiza la mejor solución disponible para tu negocio.',
   },
 ]
 
@@ -79,7 +79,7 @@ export function IntroPage() {
       { rootMargin: '0px 0px -80px 0px', threshold: 0.08 }
     )
     const sections = sectionRefs.current
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 7; i++) {
       if (sections[i]) observer.observe(sections[i])
     }
     return () => observer.disconnect()
@@ -115,7 +115,7 @@ export function IntroPage() {
           {[
             'ROI visible',
             'Transformación digital',
-            'I+D e innovación',
+            'R&D e innovación',
             'Soporte 24/7',
             'Consultoría de negocio',
             'Resultados medibles',
@@ -131,7 +131,7 @@ export function IntroPage() {
           {[
             'ROI visible',
             'Transformación digital',
-            'I+D e innovación',
+            'R&D e innovación',
             'Soporte 24/7',
             'Consultoría de negocio',
             'Resultados medibles',
@@ -227,8 +227,26 @@ export function IntroPage() {
         </div>
       </section>
 
+      {/* Apartado ROI — para directivos y dueños */}
+      <section className="intro-roi intro-scroll-section" ref={setRef(3)}>
+        <div className="intro-wrap intro-roi-inner">
+          <h2 className="intro-roi-title">ROI: lo que los directivos necesitan ver</h2>
+          <p className="intro-roi-lead">
+            Para dueños y directores la primera pregunta es clara: <strong>¿qué gano yo?</strong> Si en segundos no ven retorno, eficiencia o ventaja competitiva, pierden interés. Por eso el ROI no puede ser un detalle al final del discurso; tiene que estar visible desde el principio.
+          </p>
+          <div className="intro-roi-text">
+            <p>
+              Con esta aplicación no solo comunicas: <strong>mides</strong>. Cada campaña muestra envíos, aperturas, respuestas y seguimiento de ganancias en un mismo panel. Así puedes ver qué acciones generan ingresos y cuáles no, y tomar decisiones con datos en lugar de intuición.
+            </p>
+            <p>
+              El ROI visible significa menos tiempo perdido en herramientas dispersas, más control sobre el impacto de tus campañas y un mensaje claro para stakeholders y C-Level: aquí está el resultado, aquí está el número. Eso es lo que convence a quien tiene que aprobar la inversión.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Continuidad + Tier — dos recuadros lado a lado (estilo Azure / cards) */}
-      <section className="intro-continuity intro-scroll-section" id="servicio" ref={setRef(3)}>
+      <section className="intro-continuity intro-scroll-section" id="servicio" ref={setRef(4)}>
         <div className="intro-continuity-inner">
           <p className="intro-continuity-subtitle">Soporte y mantenimiento</p>
           <h2 className="intro-continuity-title">Continuidad operativa y soporte</h2>
@@ -251,7 +269,7 @@ export function IntroPage() {
       </section>
 
       {/* Niveles Tier 1, 2, 3 (detalle) — imagen de fondo ligera */}
-      <section className="intro-tier intro-scroll-section" ref={setRef(4)} style={{ '--tier-bg-image': `url(${TIER_BG_IMAGE})` }}>
+      <section className="intro-tier intro-scroll-section" ref={setRef(5)} style={{ '--tier-bg-image': `url(${TIER_BG_IMAGE})` }}>
         <div className="intro-tier-bg" style={{ backgroundImage: `url(${TIER_BG_IMAGE})` }} aria-hidden />
         <div className="intro-tier-overlay" aria-hidden />
         <div className="intro-wrap intro-tier-content">
@@ -279,7 +297,7 @@ export function IntroPage() {
       </section>
 
       {/* Cifras (conteo publicación) */}
-      <section className="intro-figures intro-scroll-section" id="cifras" ref={setRef(5)}>
+      <section className="intro-figures intro-scroll-section" id="cifras" ref={setRef(6)}>
         <div className="intro-wrap">
           <p className="intro-figures-subtitle">En números</p>
           <h2 className="intro-figures-title">Cifras clave</h2>
