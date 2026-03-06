@@ -5939,7 +5939,7 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(260px, 340px));
-  gap: 4rem 5rem;
+  gap: 5rem 6rem;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 3rem);
@@ -6018,7 +6018,7 @@ h4, h5, h6, button, input, select, textarea, label {
   border-radius: 2px;
   background: linear-gradient(90deg, var(--gold-600), var(--gold-400));
 }
-@media (max-width: 768px) { .intro-cards-grid { grid-template-columns: 1fr; gap: 3rem; } }
+@media (max-width: 768px) { .intro-cards-grid { grid-template-columns: 1fr; gap: 4rem; } }
 .intro-info-boxes {
   padding: 3.5rem 0;
   background: linear-gradient(180deg, #0b1e33 0%, #0f2744 50%, #123765 100%);
