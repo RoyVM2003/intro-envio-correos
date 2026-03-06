@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
+import { DiagnosisForm } from '../components/DiagnosisForm'
 
 const LOGO_URL = 'https://osdemsdigital.com/wp-content/uploads/2026/03/loogo-app.png'
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80'
@@ -86,7 +87,7 @@ export function IntroPage() {
       { rootMargin: '0px 0px -80px 0px', threshold: 0.08 }
     )
     const sections = sectionRefs.current
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 9; i++) {
       if (sections[i]) observer.observe(sections[i])
     }
     return () => observer.disconnect()
@@ -176,7 +177,7 @@ export function IntroPage() {
       </section>
 
       {/* Tarjetas de valor + cuadros corporativos (conceptos que respaldan) */}
-      <section className="intro-cards intro-scroll-section" id="valor" ref={setRef(1)}>
+      <section className="intro-cards intro-scroll-section intro-scroll-from-left" id="valor" ref={setRef(1)}>
         <div className="intro-wrap">
           <p className="intro-cards-intro">
             {t('intro.cards.intro')}
@@ -218,7 +219,7 @@ export function IntroPage() {
       </section>
 
       {/* Apartado ROI — para directivos y dueños (sin imagen de fondo) */}
-      <section className="intro-roi intro-scroll-section" ref={setRef(3)}>
+      <section className="intro-roi intro-scroll-section intro-scroll-from-left" ref={setRef(3)}>
         <div className="intro-wrap intro-roi-inner">
           <h2 className="intro-roi-title">{t('intro.roi.title')}</h2>
           <p className="intro-roi-lead">
@@ -255,7 +256,7 @@ export function IntroPage() {
       </section>
 
       {/* Niveles Tier 1, 2, 3 (detalle) — imagen de referencia en cada cuadro */}
-      <section className="intro-tier intro-scroll-section" ref={setRef(5)}>
+      <section className="intro-tier intro-scroll-section intro-scroll-from-left" ref={setRef(5)}>
         <div className="intro-wrap intro-tier-content">
           <h2 className="intro-tier-main-title">{t('intro.tier.title')}</h2>
           <p className="intro-tier-roi-callout">
@@ -312,35 +313,13 @@ export function IntroPage() {
         </div>
       </section>
 
-      {/* Formulario Diagnóstico Estratégico — diseño original */}
-      <section className="intro-diagnosis intro-scroll-section">
-        <div className="intro-wrap intro-diagnosis-inner">
-          <div className="intro-diagnosis-card">
-            <h3 className="intro-diagnosis-title">{t('intro.diagnosis.title')}</h3>
-            <form className="intro-diagnosis-form" onSubmit={(e) => e.preventDefault()}>
-              <div className="intro-diagnosis-group">
-                <input type="text" id="diagnosis-nombre" name="nombre" placeholder={t('intro.diagnosis.placeholderName')} required />
-              </div>
-              <div className="intro-diagnosis-group">
-                <input type="email" id="diagnosis-email" name="email" placeholder={t('intro.diagnosis.placeholderEmail')} required />
-              </div>
-              <div className="intro-diagnosis-group">
-                <input type="tel" id="diagnosis-telefono" name="telefono" placeholder={t('intro.diagnosis.placeholderPhone')} />
-              </div>
-              <div className="intro-diagnosis-group">
-                <input type="text" id="diagnosis-empresa" name="empresa" placeholder={t('intro.diagnosis.placeholderCompany')} />
-              </div>
-              <button type="submit" className="intro-diagnosis-btn">{t('intro.diagnosis.button')}</button>
-            </form>
-            <p className="intro-diagnosis-footer">
-              📌 {t('intro.diagnosis.footer')} <a href="#">{t('intro.diagnosis.privacy')}</a>.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Formulario Diagnóstico Estratégico — envío a /api/v1/contact */}
+      <div className="intro-scroll-section" ref={setRef(7)}>
+        <DiagnosisForm t={t} />
+      </div>
 
       {/* Cierre de contenido — CTA */}
-      <section className="intro-cta intro-cta--compact">
+      <section className="intro-cta intro-cta--compact intro-scroll-section" ref={setRef(8)}>
         <div className="intro-wrap intro-cta-inner">
           <p className="intro-cta-heading">{t('intro.cta.heading')}</p>
           <p className="intro-cta-text">{t('intro.cta.text')}</p>

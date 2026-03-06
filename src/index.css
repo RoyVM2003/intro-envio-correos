@@ -5695,13 +5695,19 @@ h4, h5, h6, button, input, select, textarea, label {
   to { opacity: 1; }
 }
 .intro-scroll-section {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transform: translateX(32px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .intro-scroll-section.intro-inview {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0) scale(1);
+}
+.intro-scroll-section.intro-scroll-from-left {
+  transform: translateX(-32px) scale(0.98);
+}
+.intro-scroll-section.intro-scroll-from-left.intro-inview {
+  transform: translateX(0) scale(1);
 }
 .intro {
   background: var(--navy-900);
@@ -5713,7 +5719,7 @@ h4, h5, h6, button, input, select, textarea, label {
   --intro-max: 1024px;
   max-width: var(--intro-max);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 clamp(1.5rem, 4vw, 2.5rem);
 }
 .intro-wrap--narrow { max-width: 720px; }
 .intro-hero {
@@ -5934,7 +5940,7 @@ h4, h5, h6, button, input, select, textarea, label {
   line-height: 1.4;
   letter-spacing: 0.06em;
 }
-.intro-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.75rem; }
+.intro-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5rem 2.75rem; max-width: 1100px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
 .intro-card {
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -6089,7 +6095,7 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-info-box--dark .intro-info-box-text { opacity: 0.95; }
 .intro-info-box--accent .intro-info-box-text { color: #334155; }
 @media (min-width: 769px) {
-  .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: stretch; }
+  .intro-info-boxes-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: stretch; }
 }
 
 /* Apartado ROI — directivos, con más vida y creatividad */
@@ -6158,7 +6164,7 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-continuity-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
 }
 .intro-continuity-subtitle {
   font-size: 0.9rem;
@@ -6191,9 +6197,10 @@ h4, h5, h6, button, input, select, textarea, label {
 .intro-continuity-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 5rem;
   align-items: stretch;
-  border-radius: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 .intro-continuity-card {
   background: rgba(255, 255, 255, 0.97);
@@ -6202,6 +6209,8 @@ h4, h5, h6, button, input, select, textarea, label {
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -6221,6 +6230,7 @@ h4, h5, h6, button, input, select, textarea, label {
   color: var(--navy-900);
   margin: 0 0 0.75rem;
   line-height: 1.35;
+  text-align: center;
 }
 .intro-continuity-card-text { font-size: 1.05rem; line-height: 1.8; color: #475569; margin: 0; flex: 1; text-align: center; }
 .intro-continuity-card-accent {
@@ -6230,7 +6240,7 @@ h4, h5, h6, button, input, select, textarea, label {
   background: linear-gradient(90deg, var(--gold-600), var(--gold-400));
 }
 @media (max-width: 768px) {
-  .intro-continuity-row { grid-template-columns: 1fr; gap: 1.5rem; }
+  .intro-continuity-row { grid-template-columns: 1fr; gap: 2rem; }
 }
 .intro-tier {
   padding: 3rem 0;
@@ -6371,12 +6381,12 @@ h4, h5, h6, button, input, select, textarea, label {
   background: #0f172a;
   color: #fff;
 }
-.intro-diagnosis-inner { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+.intro-diagnosis-inner { max-width: 960px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 2.5rem); }
 .intro-diagnosis-card {
   background: #1e293b;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  padding: 2.25rem 2rem;
+  padding: 2.5rem clamp(2rem, 5vw, 3rem);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
@@ -6385,15 +6395,9 @@ h4, h5, h6, button, input, select, textarea, label {
   font-size: 1.55rem;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 0.35rem;
+  margin: 0 0 1.25rem;
   line-height: 1.3;
   letter-spacing: -0.01em;
-}
-.intro-diagnosis-subtitle {
-  font-size: 1.05rem;
-  color: #3b82f6;
-  margin: 0 0 1.75rem;
-  font-weight: 600;
 }
 .intro-diagnosis-form { display: flex; flex-direction: column; gap: 1rem; }
 .intro-diagnosis-group input {
@@ -6446,6 +6450,12 @@ h4, h5, h6, button, input, select, textarea, label {
 
 .intro-cta { padding: 2rem 0; background: var(--navy-900); color: #f9fafb; }
 .intro-cta--compact { padding: 1.5rem 0; }
+.intro-cta-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .intro-cta-digital {
   margin: 1.25rem 0 0;
   font-size: 0.95rem;
