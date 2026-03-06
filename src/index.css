@@ -61,28 +61,6 @@ body {
   min-height: 100vh;
 }
 
-/* Franja superior intro — sticky: se queda arriba al hacer scroll */
-.intro-top-strip {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  width: 100%;
-  padding: 1rem 1.5rem;
-  background: rgba(11, 30, 51, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-}
-
-.intro-top-strip-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 /* Selector de idioma (globo) — visible en todas las pestañas */
 .lang-selector {
   position: fixed;

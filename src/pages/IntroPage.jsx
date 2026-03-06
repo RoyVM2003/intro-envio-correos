@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { DiagnosisForm } from '../components/DiagnosisForm'
 import { IntroFooter } from '../components/IntroFooter'
-import { IntroTopBar } from '../components/IntroTopBar'
 
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80'
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'
@@ -57,15 +56,7 @@ export function IntroPage() {
   }
 
   return (
-    <div className="intro-page-container">
-      {/* 1. BARRA FIJA */}
-      <div className="intro-top-strip">
-        <div className="intro-top-strip-inner">
-          <IntroTopBar />
-        </div>
-      </div>
-
-      {/* 2. HERO */}
+    <div className="intro">
       <section className="intro-hero">
         <div className="intro-hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
         <div className="intro-hero-overlay" />

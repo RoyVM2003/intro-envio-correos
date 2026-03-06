@@ -1,17 +1,17 @@
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { LanguageSelector } from './LanguageSelector'
 import './IntroTopBar.css'
 
 /**
- * Enlaces: OSDEMS Digital | Idiomas | Iniciar sesión
- * Se usa dentro de intro-top-strip (sticky) en IntroPage
+ * OSDEMS Digital | Idiomas | Iniciar sesión — flotando arriba a la derecha
  */
 export function IntroTopBar() {
   const { t } = useLanguage()
 
-  return (
-    <div className="intro-top-bar">
+  const content = (
+    <div className="intro-top-bar intro-top-bar--fixed">
       <a
         href="https://osdemsdigital.com"
         target="_blank"
@@ -26,4 +26,6 @@ export function IntroTopBar() {
       </Link>
     </div>
   )
+
+  return createPortal(content, document.body)
 }

@@ -1,10 +1,16 @@
-/* Enlaces dentro de la franja sticky */
 .intro-top-bar {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.intro-top-bar--fixed {
+  position: fixed !important;
+  top: 1.25rem !important;
+  right: 1.5rem !important;
+  z-index: 2147483647 !important;
 }
 
 .intro-top-bar-link {
@@ -36,32 +42,10 @@
   border-color: rgba(212, 168, 58, 0.4);
 }
 
-/* LanguageSelector dentro de la barra: quitar posición fija */
+/* LanguageSelector dentro de la barra */
 .intro-top-bar .lang-selector {
   position: relative !important;
   top: auto !important;
   left: auto !important;
   right: auto !important;
-}
-.intro-top-strip {
-  position: fixed; /* <--- CAMBIA ESTO */
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 9999; 
-  pointer-events: none; /* No bloquea el scroll */
-}
-
-.intro-top-strip-inner {
-  pointer-events: auto; /* PERMITE hacer clic en los botones */
-  /* ... resto de tus estilos ... */
-}
-
-/* Ajuste opcional para que se vea mejor sobre el fondo */
-.intro-top-bar {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 0.5rem;
-  border-radius: 12px;
 }
